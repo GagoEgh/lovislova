@@ -1,0 +1,101 @@
+.conteiner{
+    padding:20px;
+    height: 100vh;
+    background-color: rgb(105, 211, 211);
+}
+.catalog{
+    display: flex;
+    margin: 0 auto;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.5);
+    width: 80%;
+}
+
+.carusel{
+    width: 250px;
+    text-align:center;
+    padding:20px;
+}
+
+.backgrounds{
+    padding:20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.white,.black, .moccasin{
+    width: 60px;
+    height: 30px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.white{
+    position: relative;
+    background-color: white;
+    
+}
+
+.white::after{
+    opacity: 0;
+    content: "spitak";
+    position: absolute;
+    left: -5px;
+    top:105%;
+    background-color: white;
+    border-radius: 10px;
+    width: 60px;
+    text-align: center;
+    padding: 5px;
+}
+
+.white:hover.white::after{
+    transition: 1s;
+    opacity: 1;
+}
+
+.black{
+    position: relative;
+    background-color: rgb(42, 41, 41);
+}
+
+.black::after{
+    opacity: 0;
+    content: "sev";
+    position: absolute;
+    left: -5px;
+    top:105%;
+    background-color: white;
+    border-radius: 10px;
+    width: 60px;
+    text-align: center;
+    padding: 5px;
+}
+
+.black:hover.black::after{
+    transition: 1s;
+    opacity: 1;
+}
+
+.moccasin{
+    position: relative;
+    background-color: rgb(243, 203, 133);
+}
+
+.moccasin::after{
+    opacity: 0;
+    content: "moccasin";
+    position: absolute;
+    left: -5px;
+    top:105%;
+    background-color: white;
+    border-radius: 10px;
+    width: 60px;
+    text-align: center;
+    padding: 5px;
+}
+
+.moccasin:hover.moccasin::after{
+    transition: 1s;
+    opacity: 1;
+}
