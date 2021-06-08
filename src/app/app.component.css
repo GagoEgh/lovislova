@@ -6,9 +6,10 @@
 .catalog{
     display: flex;
     margin: 0 auto;
-    border-radius: 25px;
+    border-radius: 40px;
     background: rgba(255,255,255,0.5);
-    width: 80%;
+    width: 50%;
+    padding: 5px 50px;
 }
 
 .carusel{
@@ -37,21 +38,20 @@
 }
 
 .white::after{
-    opacity: 0;
     content: "spitak";
     position: absolute;
     left: -5px;
-    top:105%;
+    top:210%;
     background-color: white;
     border-radius: 10px;
     width: 60px;
     text-align: center;
     padding: 5px;
+    display: none;
 }
 
 .white:hover.white::after{
-    transition: 1s;
-    opacity: 1;
+  display: block;
 }
 
 .black{
@@ -60,21 +60,21 @@
 }
 
 .black::after{
-    opacity: 0;
     content: "sev";
     position: absolute;
     left: -5px;
-    top:105%;
+    top:210%;
     background-color: white;
     border-radius: 10px;
     width: 60px;
     text-align: center;
     padding: 5px;
+    transition: .5s;
+    display: none;
 }
 
 .black:hover.black::after{
-    transition: 1s;
-    opacity: 1;
+   display: block;
 }
 
 .moccasin{
@@ -83,19 +83,220 @@
 }
 
 .moccasin::after{
-    opacity: 0;
     content: "moccasin";
     position: absolute;
     left: -5px;
-    top:105%;
+    top:210%;
     background-color: white;
     border-radius: 10px;
     width: 60px;
     text-align: center;
     padding: 5px;
+    display: none;
 }
 
 .moccasin:hover.moccasin::after{
-    transition: 1s;
+    display: block;
+}
+
+.imgColor{
+    padding-top:28px;
+    display: flex;
+    flex-direction: row;
+}
+
+.colorless, .color, .sepia{
+    width: 30px;
+    height: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.colorless{
+    position: relative;
+    display: flex;
+    background-color: rgb(39, 39, 39);
+    opacity: .5;
+}
+
+.colorless::after{
+    content: '';
+    position: absolute;
+    left:0;
+    top:0;
+    width: 50%;
+    height: 100%;
+    background-color:rgb(224, 216, 216);
+   
+}
+
+.colorless::before{
+    content: 'bolor nkarnery anguyn en';
+    position: absolute;
+    top:310%;
+    left: -20px;
+    width: 180px;
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    height: 20px;
+    padding: 5px;
+    display: none;
+}
+
+.colorless:hover{
     opacity: 1;
+    transition: .5s;
+}
+
+.colorless:hover.colorless::before{
+    display: block;
+}
+
+.color{
+    opacity: .5;
+    position: relative;
+    background-color: rgb(225, 65, 126);
+}
+
+.color::after{
+    content: '';
+    position: absolute;
+    left:0;
+    top:0;
+    width: 50%;
+    height: 100%;
+    background-color:rgb(230, 33, 33);
+}
+
+.color::before{
+    content: 'bolor nkarnery gujnavor en';
+    position: absolute;
+    top:310%;
+    left: -55px;
+    width: 180px;
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    height: 20px;
+    padding: 5px;
+    display: none;
+}
+
+.color:hover{
+    opacity: 1;
+    transition: .5s;
+}
+
+.color:hover.color::before{
+    display: block;
+}
+
+.sepia{
+    position: relative;
+    opacity: .5;
+    background-color: rgb(129, 128, 126);
+}
+
+.sepia::before{
+    content: 'bolor nkarnery sepia en';
+    position: absolute;
+    top:310%;
+    left: -90px;
+    width: 180px;
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    height: 20px;
+    padding: 5px;
+    display: none;
+}
+
+.sepia:hover{
+    opacity: 1;
+    transition: .5s;
+}
+
+.sepia:hover.sepia::before{
+   display: block;
+}
+
+
+/* RAMKA */
+.ramka{
+    margin-top: 50px;
+    position: relative;
+}
+
+.ramka_1_aj_ank,.ramka_1_ver,.ramka_1_aj,.ramka_1_aj_nerqev,.ramka_1_nerqev,
+.ramka_1_nerqev_zan,.ramka_1_zax,.ramka_1_zax_van,.name{
+    position: absolute;
+}
+
+.ramka_1_ver{
+    left: 21%;
+    top: 0;
+}
+
+.ramka_1_ver img, .ramka_1_nerqev img{
+    width: 818px; height: 40px;
+}
+
+.ramka_1_aj_ank img, .ramka_1_aj_nerqev img, .ramka_1_nerqev_zan img,.ramka_1_zax_van img{
+    width: 40px; height: 40px;
+}
+
+.ramka_1_aj_ank{ 
+    left:76.3%;
+    top: 0;
+}
+
+
+.ramka_1_aj{
+    left: 76.3%;
+    top:40px;
+}
+
+.ramka_1_aj img,.ramka_1_zax img{
+    height: 257px;
+    width: 40px;
+}
+
+.ramka_1_aj_nerqev{
+    left: 76.3%;
+    top: 265px;
+}
+
+.ramka_1_nerqev{
+    left: 21%;
+    top: 265px;
+}
+
+.ramka_1_nerqev_zan{
+    left:18.3%;
+    top:265px;
+}
+
+.ramka_1_zax{
+    left:18.3%;
+    top:8px;
+}
+
+.ramka_1_zax_van{
+    left: 18.3%;
+    top:0;
+}
+
+.name {
+    left:27%;
+    top:90px;
+}
+
+.name input{
+    width: 600px;
+    height: 100px;
+    font-size: 45px;
+    padding: 20px;
+    text-align: center;
 }

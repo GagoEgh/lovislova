@@ -1,18 +1,48 @@
 <header class="conteiner">
   <div class="catalog">
     <div class="carusel">
-      <ng-image-slider #nav [images]="imageObject" [infinite]="false" [autoSlide]="1"
-        [imageSize]="{width:'20%', height: 30}" [imagePopup]='false' slideImage="1"></ng-image-slider>
+      <ng-image-slider #nav [images]="imageObject" [infinite]="false" [autoSlide]="0.5"
+        [imageSize]="{width:'30.6%', height: 30}" [imagePopup]='false' slideImage="0.5"></ng-image-slider>
     </div>
     <div class="backgrounds">
       <div class="white"></div>
       <div class="black"></div>
       <div class="moccasin"></div>
     </div>
+    <div class="imgColor">
+      <div class="colorless"></div>
+      <div class="color"></div>
+      <div class="sepia"></div>
+    </div>
   </div>
-  <div class="imgColor">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
+  <main class="ramka">
+    <div class="ramka_1_ver">
+      <img src="./assets/1_hor/1_ver_t.png">
+    </div>
+    <div class="ramka_1_aj_ank">
+      <img src="./assets/1_hor/1_corners_tr.png">
+    </div>
+    <div class="ramka_1_aj">
+       <img src="./assets/1_hor/1_hor_r.png">
+    </div>
+    <div class="ramka_1_aj_nerqev">
+      <img src="./assets/1_hor/1_corners_br.png">
+    </div>
+    <div class="ramka_1_nerqev">
+      <img src="./assets/1_hor/1_ver_b.png">
+    </div>
+    <div class="ramka_1_nerqev_zan">
+      <img src="./assets/1_hor/1_corners_bl.png">
+    </div>
+    <div class="ramka_1_zax">
+      <img src="./assets/1_hor/1_hor_l.png">
+    </div>
+    <div class="ramka_1_zax_van">
+      <img src="./assets/1_hor/1_corners_tl.png">
+    </div>
+    <div class="name">
+      <input type="text">
+    </div>
+    
+  </main>
 </header>
