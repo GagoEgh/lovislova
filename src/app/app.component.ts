@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FramesServService } from './frames-serv.service';
 
 
@@ -8,7 +8,8 @@ import { FramesServService } from './frames-serv.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    constructor(public frames:FramesServService){}
+    isActive = false;
+    constructor(public frames:FramesServService,public r:Renderer2){}
     ngOnInit(): void {
         this.imageClick(this.frames.index);
     }
@@ -16,10 +17,11 @@ export class AppComponent implements OnInit {
     imageClick($event:number){
         this.frames.index = $event+1;
         this.frames.frame = this.frames.frames.find(item=>item.id === this.frames.index);
-      //  console.log(this.frames.imageObject[$event])
-      this.frames.imageObject[$event]
     }
 
+    getImgId(i:number){
+      return (i+1)===this.frames.frame?.id;
+    }
     changeBg(){
         console.log()
     }
