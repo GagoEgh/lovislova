@@ -1,13 +1,15 @@
 <header class="conteiner">
   <div class="catalog">
     <div class="carusel">
-      <ng-image-slider #nav [images]="imageObject" [infinite]="false" [autoSlide]="0.5"
-        [imageSize]="{width:'30.6%', height: 30}" [imagePopup]='false' slideImage="0.5"></ng-image-slider>
+      <ng-image-slider  [images]="frames.imageObject" [infinite]="false" [autoSlide]="0" 
+        [imageSize]="{width:'30.6%', height: 30}" [imagePopup]='false' slideImage="0"
+        (imageClick)="imageClick($event)">
+      </ng-image-slider>
     </div>
     <div class="backgrounds">
-      <div class="white"></div>
-      <div class="black"></div>
-      <div class="moccasin"></div>
+      <div class="white" (click)="changeBg()"></div>
+      <div class="black" (click)="changeBg()"></div>
+      <div class="moccasin" (click)="changeBg()"></div>
     </div>
     <div class="imgColor">
       <div class="colorless"></div>
@@ -16,33 +18,34 @@
     </div>
   </div>
   <main class="ramka">
-    <div class="ramka_1_ver">
-      <img src="./assets/1_hor/1_ver_t.png">
+    <div class="wrap">
+      <div class="ramka_1_ver">
+        <img src={{frames.frame?.img_top}}>
+      </div>
+      <div class="ramka_1_aj_ank">
+        <img src={{frames.frame?.img_top_rigth}}>
+      </div>
+      <div class="ramka_1_aj">
+        <img src={{frames.frame?.img_rigth}}>
+      </div>
+      <div class="ramka_1_aj_nerqev">
+        <img src={{frames.frame?.img_rigth_bottom}}>
+      </div>
+      <div class="ramka_1_nerqev">
+        <img src={{frames.frame?.img_bottom}}>
+      </div>
+      <div class="ramka_1_nerqev_zan">
+        <img src={{frames.frame?.img_bottom_left}}>
+      </div>
+      <div class="ramka_1_zax">
+        <img src={{frames.frame?.img_left}}>
+      </div>
+      <div class="ramka_1_zax_van">
+        <img src={{frames.frame?.img_left__top}}>
+      </div>
+      <div class="name">
+        <input type="text">
+      </div>
     </div>
-    <div class="ramka_1_aj_ank">
-      <img src="./assets/1_hor/1_corners_tr.png">
-    </div>
-    <div class="ramka_1_aj">
-       <img src="./assets/1_hor/1_hor_r.png">
-    </div>
-    <div class="ramka_1_aj_nerqev">
-      <img src="./assets/1_hor/1_corners_br.png">
-    </div>
-    <div class="ramka_1_nerqev">
-      <img src="./assets/1_hor/1_ver_b.png">
-    </div>
-    <div class="ramka_1_nerqev_zan">
-      <img src="./assets/1_hor/1_corners_bl.png">
-    </div>
-    <div class="ramka_1_zax">
-      <img src="./assets/1_hor/1_hor_l.png">
-    </div>
-    <div class="ramka_1_zax_van">
-      <img src="./assets/1_hor/1_corners_tl.png">
-    </div>
-    <div class="name">
-      <input type="text">
-    </div>
-    
   </main>
 </header>
