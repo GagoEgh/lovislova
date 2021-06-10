@@ -22,7 +22,7 @@ export class FramesServService {
     div=[{
         color:"white"
     },{
-        color:'black'
+        color:'grey'
     },{
         color:'moccasin'
     }]

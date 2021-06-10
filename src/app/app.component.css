@@ -30,7 +30,7 @@
     cursor: pointer;
     width: 90%;
     margin-left: 5px;
-    padding-top: 5px;
+    padding-top: 17px;
     
 }
 
@@ -101,7 +101,7 @@
 }
 
 .imgColor{
-    padding-top:28px;
+    padding-top:24px;
     display: flex;
     flex-direction: row;
 }
@@ -135,14 +135,14 @@
 .colorless::before{
     content: 'bolor nkarnery anguyn en';
     position: absolute;
-    top:250%;
+    top:180%;
     left: -20px;
-    width: 180px;
+    width: 200px;
     background-color: white;
     text-align: center;
     border-radius: 5px;
-    height: 20px;
     padding: 5px;
+    font-size: 14px;
     display: none;
 }
 
@@ -174,14 +174,14 @@
 .color::before{
     content: 'bolor nkarnery gujnavor en';
     position: absolute;
-    top:250%;
+    top:180%;
     left: -55px;
     width: 180px;
     background-color: white;
     text-align: center;
     border-radius: 5px;
-    height: 20px;
     padding: 5px;
+    font-size: 14px;
     display: none;
 }
 
@@ -203,15 +203,16 @@
 .sepia::before{
     content: 'bolor nkarnery sepia en';
     position: absolute;
-    top:250%;
+    top:180%;
     left: -90px;
     width: 180px;
     background-color: white;
     text-align: center;
     border-radius: 5px;
-    height: 20px;
+    font-size: 14px;
     padding: 5px;
     display: none;
+   
 }
 
 .sepia:hover{
@@ -310,5 +311,27 @@
     height: 140px;
     font-size: 310%;
     text-align: center;
-    
+}
+
+.create{
+    position: absolute;
+    left: 43%;
+    top: 120%;
+    width: 180px;
+    padding: 10px;
+    text-align: center;
+    text-transform:uppercase;
+    border-radius: 15px;
+    background-color: goldenrod;
+    border: none;
+    color: rgb(88, 86, 86);
+    letter-spacing: 1px;
+    transition: .5s;
+}
+
+.create:active{
+    color: white;
+    background-color:rgb(119, 88, 9);
+    box-shadow: 1px 2px 1px rgb(77, 57, 7);
+    transition: 0.5s;
 }

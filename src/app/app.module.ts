@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { NgbdModalContentComponent} from './ngbd-modal-content/ngbd-modal-conten
     AppRoutingModule,
     NgImageSliderModule,
     FormsModule,
+    ReactiveFormsModule,
     ColorPickerModule,
     NgbModule,
 

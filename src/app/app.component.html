@@ -59,9 +59,13 @@
         <img src={{frames.frame?.img_left__top}}>
       </div>
       <div class="name">
-        <input type="text">
+        <form [formGroup]="validateForm">
+          <input type="text" formControlName='text'>
+        </form>
+
       </div>
-      <p class="btn" (click)="open()" >ինչպես գրել բառ, տառ և սիմվոլ</p>
+      <p class="btn" (click)="open()">ինչպես գրել բառ, տառ և սիմվոլ</p>
     </div>
+    <button type="submit" (click)='onSubmit()' class="create">create word</button>
   </main>
 </header>
