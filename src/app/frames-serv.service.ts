@@ -18,6 +18,14 @@ interface ImgRamka {
 export class FramesServService {
     frame: any;
     index = 0;
+    background ="white";
+    div=[{
+        color:"white"
+    },{
+        color:'black'
+    },{
+        color:'moccasin'
+    }]
     imageObject = [{
         sum: "1000 dram",
         baget: 'sev',

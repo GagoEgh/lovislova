@@ -1,6 +1,7 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FramesServService } from './frames-serv.service';
-
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdModalContentComponent } from './ngbd-modal-content/ngbd-modal-content.component';
 
 @Component({
     selector: 'app-root',
@@ -9,7 +10,7 @@ import { FramesServService } from './frames-serv.service';
 })
 export class AppComponent implements OnInit {
     isActive = false;
-    constructor(public frames:FramesServService,public r:Renderer2){}
+    constructor(public frames:FramesServService,private modalService: NgbModal){}
     ngOnInit(): void {
         this.imageClick(this.frames.index);
     }
@@ -22,7 +23,14 @@ export class AppComponent implements OnInit {
     getImgId(i:number){
       return (i+1)===this.frames.frame?.id;
     }
-    changeBg(){
-        console.log()
+
+    changeBg(color:string){
+        this.frames.background = color;
+        console.log(this.frames.background);
     }
+
+    
+  open() {
+    const modalRef = this.modalService.open(NgbdModalContentComponent);
+  }
 }

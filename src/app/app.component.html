@@ -8,17 +8,23 @@
 
       <ul class="imageObject">
         <li *ngFor="let img of frames.imageObject,let i=index">
-           <div [ngClass] = "{'bottom': getImgId(i)}">
+          <div [ngClass]="{'bottom': getImgId(i)}">
             <img src={{img.thumbImage}} class="thumbImage" (click)="imageClick(i)">
           </div>
-         
+          <ul class="card">
+            <li>arjeqy: {{img.sum}}</li>
+            <li>baget: {{img.baget}}</li>
+            <li>laynutyun{{img.width}}</li>
+          </ul>
         </li>
       </ul>
     </div>
     <div class="backgrounds">
-      <div class="white" (click)="changeBg()"></div>
-      <div class="black" (click)="changeBg()"></div>
-      <div class="moccasin" (click)="changeBg()"></div>
+      <div class="white" [style.backgroundColor]='item.color' (click)="changeBg(item.color)"
+        *ngFor="let item of frames.div">
+        <div class="text">{{item.color}}</div>
+      </div>
+
     </div>
     <div class="imgColor">
       <div class="colorless"></div>
@@ -27,7 +33,7 @@
     </div>
   </div>
   <main class="ramka">
-    <div class="wrap">
+    <div class="wrap" [style.backgroundColor]="frames.background">
       <div class="ramka_1_ver">
         <img src={{frames.frame?.img_top}}>
       </div>
@@ -55,6 +61,7 @@
       <div class="name">
         <input type="text">
       </div>
+      <p class="btn" (click)="open()" >ինչպես գրել բառ, տառ և սիմվոլ</p>
     </div>
   </main>
 </header>
