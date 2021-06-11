@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FramesServService } from './frames-serv.service';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalContentComponent } from './ngbd-modal-content/ngbd-modal-content.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Value, } from './img-ramka'
+  ;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,12 +20,12 @@ export class AppComponent implements OnInit {
     this.validateForm = this.form.group(
       { text: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(9)]] }
     )
-    localStorage.setItem('1','./assets/world_img/1.jpg');
-    localStorage.setItem('2','./assets/world_img/2.jpg');
-    localStorage.setItem('3','./assets/world_img/3.jpg');
-    localStorage.setItem('4','./assets/world_img/4.jpg');
-    localStorage.setItem('5','./assets/world_img/5.jpg');
-    localStorage.setItem('6','./assets/world_img/6.jpg');
+
+    localStorage.setItem('A', './assets/world_img/1.jpg');
+    localStorage.setItem('B', './assets/world_img/4.jpg,');
+    localStorage.setItem('C', './assets/world_img/7.jpg,');
+    localStorage.setItem('D', './assets/world_img/10.jpg,');
+    localStorage.setItem('E', './assets/world_img/13.jpg,')
   }
 
   imageClick($event: number) {
@@ -41,12 +42,26 @@ export class AppComponent implements OnInit {
     console.log(this.frames.background);
   }
 
-  onSubmit() {
-    console.log(this.validateForm);
-    if(this.validateForm.invalid){
-      return
-    }
+  imgFone(filter: Value) {
+    this.frames.painding.values = filter;
+
   }
+
+  onSubmit() {
+    if (this.validateForm.invalid) return;
+
+    let text: string = this.validateForm.get('text')?.value;
+    for (let i = 0; i < text.length; i++) {
+      let img: string | null = localStorage?.getItem(text[i].toUpperCase());
+      if (typeof img === 'string') this.frames.painding.imgs.push(img);
+    }
+
+    console.log(this.frames.painding);
+    this.frames.isImg = false;
+    this.validateForm.reset()
+
+  }
+
   open() {
     const modalRef = this.modalService.open(NgbdModalContentComponent);
   }

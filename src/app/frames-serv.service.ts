@@ -1,16 +1,5 @@
 import { Injectable } from '@angular/core';
-
-interface ImgRamka {
-    id: number,
-    img_top: string,
-    img_top_rigth: string,
-    img_rigth: string,
-    img_rigth_bottom: string,
-    img_bottom: string,
-    img_bottom_left: string,
-    img_left: string,
-    img_left__top: string
-}
+import { ImgRamka, Painding } from './img-ramka'
 
 @Injectable({
     providedIn: 'root'
@@ -18,14 +7,54 @@ interface ImgRamka {
 export class FramesServService {
     frame: any;
     index = 0;
-    background ="white";
-    div=[{
-        color:"white"
-    },{
-        color:'grey'
-    },{
-        color:'moccasin'
-    }]
+    background = "white";
+    isImg = true;
+    painding: Painding = {
+        values: {
+            colored: false,
+            withandblack: true,
+            sepia: false
+        },
+        imgs: []
+    };
+
+    div = [{
+        color: "white"
+    }, {
+        color: 'grey'
+    }, {
+        color: 'moccasin'
+    }];
+
+    imgColor = [{
+        color: 'black',
+        text: 'բոլոր նկարները անգույն են',
+        child: 'white',
+        values: {
+            colored: false,
+            withandblack: true,
+            sepia: false
+        }
+    }, {
+        color: 'red',
+        text: 'բոլոր նկարները գունավոր են',
+        child: 'palevioletred',
+        values: {
+            colored: true,
+            withandblack: false,
+            sepia: false
+        }
+    }, {
+        color: 'grey',
+        text: 'բոլոր նկարները սեպիա են',
+        child: 'grey',
+        values: {
+            colored: false,
+            withandblack: false,
+            sepia: true
+        }
+    }];
+
     imageObject = [{
         sum: "1000 dram",
         baget: 'sev',

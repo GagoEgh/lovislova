@@ -1,11 +1,6 @@
 <header class="conteiner">
   <div class="catalog">
     <div class="carusel">
-      <!-- <ng-image-slider  [images]="frames.imageObject" [infinite]="false" [autoSlide]="0" 
-        [imageSize]="{width:'30.6%', height: 30}" [imagePopup]='false' slideImage="0"
-        (imageClick)="imageClick($event)" [ngClass]="{'outline':setClass()}">
-      </ng-image-slider> -->
-
       <ul class="imageObject">
         <li *ngFor="let img of frames.imageObject,let i=index">
           <div [ngClass]="{'bottom': getImgId(i)}">
@@ -24,48 +19,57 @@
         *ngFor="let item of frames.div">
         <div class="text">{{item.color}}</div>
       </div>
-
     </div>
     <div class="imgColor">
-      <div class="colorless"></div>
-      <div class="color"></div>
-      <div class="sepia"></div>
-    </div>
-  </div>
-  <main class="ramka">
-    <div class="wrap" [style.backgroundColor]="frames.background">
-      <div class="ramka_1_ver">
-        <img src={{frames.frame?.img_top}}>
-      </div>
-      <div class="ramka_1_aj_ank">
-        <img src={{frames.frame?.img_top_rigth}}>
-      </div>
-      <div class="ramka_1_aj">
-        <img src={{frames.frame?.img_rigth}}>
-      </div>
-      <div class="ramka_1_aj_nerqev">
-        <img src={{frames.frame?.img_rigth_bottom}}>
-      </div>
-      <div class="ramka_1_nerqev">
-        <img src={{frames.frame?.img_bottom}}>
-      </div>
-      <div class="ramka_1_nerqev_zan">
-        <img src={{frames.frame?.img_bottom_left}}>
-      </div>
-      <div class="ramka_1_zax">
-        <img src={{frames.frame?.img_left}}>
-      </div>
-      <div class="ramka_1_zax_van">
-        <img src={{frames.frame?.img_left__top}}>
-      </div>
-      <div class="name">
-        <form [formGroup]="validateForm">
-          <input type="text" formControlName='text'>
-        </form>
+      <div>
 
       </div>
-      <p class="btn" (click)="open()">ինչպես գրել բառ, տառ և սիմվոլ</p>
+      <div class="colorless" [style.backgroundColor]='block.color' *ngFor='let block of frames.imgColor'
+        (click)="imgFone(block.values)">
+        <div class="lessWhite" [style.backgroundColor]='block.child'></div>
+        <p class="info">{{block.text}}</p>
+      </div>
     </div>
-    <button type="submit" (click)='onSubmit()' class="create">create word</button>
+  </div>
+
+  <main class="ramka">
+    <div *ngIf ='frames.isImg'>
+      <div class="wrap" [style.backgroundColor]="frames.background">
+        <div class="ramka_1_ver">
+          <img src={{frames.frame?.img_top}}>
+        </div>
+        <div class="ramka_1_aj_ank">
+          <img src={{frames.frame?.img_top_rigth}}>
+        </div>
+        <div class="ramka_1_aj">
+          <img src={{frames.frame?.img_rigth}}>
+        </div>
+        <div class="ramka_1_aj_nerqev">
+          <img src={{frames.frame?.img_rigth_bottom}}>
+        </div>
+        <div class="ramka_1_nerqev">
+          <img src={{frames.frame?.img_bottom}}>
+        </div>
+        <div class="ramka_1_nerqev_zan">
+          <img src={{frames.frame?.img_bottom_left}}>
+        </div>
+        <div class="ramka_1_zax">
+          <img src={{frames.frame?.img_left}}>
+        </div>
+        <div class="ramka_1_zax_van">
+          <img src={{frames.frame?.img_left__top}}>
+        </div>
+        <div class="name">
+          <form [formGroup]="validateForm">
+            <input type="text" formControlName='text' maxlength="9">
+          </form>
+
+        </div>
+        <p class="btn" (click)="open()">ինչպես գրել բառ, տառ և սիմվոլ</p>
+      </div>
+      <button type="submit" (click)='onSubmit()' class="create">create word</button>
+    </div>
   </main>
+
+
 </header>

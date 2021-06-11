@@ -58,8 +58,6 @@
    border-bottom: 2px solid rgb(25, 156, 156);
 }
 
-
-
 .backgrounds{
     display: flex;
     width: 20%;
@@ -106,38 +104,22 @@
     flex-direction: row;
 }
 
-.colorless, .color, .sepia{
+.colorless{
     width: 30px;
     height: 20px;
     margin-left: 5px;
     cursor: pointer;
     border-radius: 5px;
-}
-
-.colorless{
     position: relative;
     display: flex;
-    background-color: rgb(39, 39, 39);
     opacity: .5;
 }
 
-.colorless::after{
-    content: '';
-    position: absolute;
-    left:0;
-    top:0;
-    width: 50%;
-    height: 100%;
-    background-color:rgb(224, 216, 216);
-   
-}
-
-.colorless::before{
-    content: 'bolor nkarnery anguyn en';
+.info{
     position: absolute;
     top:180%;
     left: -20px;
-    width: 200px;
+    width: 220px;
     background-color: white;
     text-align: center;
     border-radius: 5px;
@@ -149,81 +131,19 @@
 .colorless:hover{
     opacity: 1;
     transition: .5s;
-}
+} 
 
-.colorless:hover.colorless::before{
+.colorless:hover .info{
     display: block;
 }
 
-.color{
-    opacity: .5;
-    position: relative;
-    background-color: rgb(225, 65, 126);
-}
-
-.color::after{
-    content: '';
+.lessWhite{
     position: absolute;
     left:0;
     top:0;
     width: 50%;
     height: 100%;
-    background-color:rgb(230, 33, 33);
 }
-
-.color::before{
-    content: 'bolor nkarnery gujnavor en';
-    position: absolute;
-    top:180%;
-    left: -55px;
-    width: 180px;
-    background-color: white;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 14px;
-    display: none;
-}
-
-.color:hover{
-    opacity: 1;
-    transition: .5s;
-}
-
-.color:hover.color::before{
-    display: block;
-}
-
-.sepia{
-    position: relative;
-    opacity: .5;
-    background-color: rgb(129, 128, 126);
-}
-
-.sepia::before{
-    content: 'bolor nkarnery sepia en';
-    position: absolute;
-    top:180%;
-    left: -90px;
-    width: 180px;
-    background-color: white;
-    text-align: center;
-    border-radius: 5px;
-    font-size: 14px;
-    padding: 5px;
-    display: none;
-   
-}
-
-.sepia:hover{
-    opacity: 1;
-    transition: .5s;
-}
-
-.sepia:hover.sepia::before{
-   display: block;
-}
-
 
 /* RAMKA */
 .ramka{
