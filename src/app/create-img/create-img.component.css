@@ -1,0 +1,91 @@
+.ramka{
+    margin-top: 50px;
+    width: 100vw;
+}
+
+.cm{
+    height: 30px;
+    margin: 50px auto;
+    border-top: 1px solid;
+    position: relative;
+}
+
+.cm p{
+    position: absolute;
+    top:-1.74vh;
+}
+
+.height{
+    border-left: 1px solid;
+    height: 290px;
+    position: absolute;
+    left: -5vw;
+    top: 0;
+}
+
+.height p{
+    display: block;
+    transform: rotate(90deg);
+    margin: 284px 0 0 -4.5px;
+}
+
+.wrap{
+    height: 290px;
+    display: flex;
+    margin: 50px auto;
+    justify-content: space-around;
+    position: relative;
+}
+
+.ramka_1_aj_ank,.ramka_1_ver,.ramka_1_aj,.ramka_1_aj_nerqev,.ramka_1_nerqev,
+.ramka_1_nerqev_zan,.ramka_1_zax,.ramka_1_zax_van,.name{
+    position: absolute;
+}
+
+.ramka_1_zax_van{ 
+    top:-4vh;
+    left:-2.6vw;
+}
+
+.ramka_1_ver{
+    left: 0;
+    top: -4vh;
+}
+
+.ramka_1_ver img,.ramka_1_nerqev img{
+    height: 40px;
+}
+
+.ramka_1_aj_ank{ 
+    top:-4vh;
+}
+
+.ramka_1_aj img,.ramka_1_zax img{
+  height: 290px;
+  width: 40px; 
+}
+
+.ramka_1_aj_nerqev{
+    top: 290px;
+}
+
+.ramka_1_nerqev{
+    top: 290px;
+    left: 0;
+}
+
+.ramka_1_nerqev_zan{
+    left: -2.6vw;
+    top: 290px;
+}
+
+.ramka_1_zax{
+    left: -2.6vw;
+    top:0.3vh;
+}
+
+.img {
+    padding: 80px 0 0 20px;
+     width: 70%;
+    height: 220px;
+}

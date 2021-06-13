@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalContentComponent} from './ngbd-modal-content/ngbd-modal-content.component';
+import { CreateImgComponent } from './create-img/create-img.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NgbdModalContentComponent
+    NgbdModalContentComponent,
+    CreateImgComponent
   ],
   imports: [
     BrowserModule,

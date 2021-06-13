@@ -7,6 +7,7 @@ import { ImgRamka, Painding } from './img-ramka'
 export class FramesServService {
     frame: any;
     index = 0;
+   
     background = "white";
     isImg = true;
     painding: Painding = {
@@ -15,7 +16,9 @@ export class FramesServService {
             withandblack: true,
             sepia: false
         },
-        imgs: []
+        imgs: [],
+    
+
     };
 
     div = [{

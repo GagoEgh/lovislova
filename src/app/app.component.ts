@@ -21,11 +21,12 @@ export class AppComponent implements OnInit {
       { text: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(9)]] }
     )
 
+
     localStorage.setItem('A', './assets/world_img/1.jpg');
-    localStorage.setItem('B', './assets/world_img/4.jpg,');
-    localStorage.setItem('C', './assets/world_img/7.jpg,');
-    localStorage.setItem('D', './assets/world_img/10.jpg,');
-    localStorage.setItem('E', './assets/world_img/13.jpg,')
+    localStorage.setItem('B', './assets/world_img/4.jpg');
+    localStorage.setItem('C', './assets/world_img/7.jpg');
+    localStorage.setItem('D', './assets/world_img/10.jpg');
+    localStorage.setItem('E', './assets/world_img/13.jpg')
   }
 
   imageClick($event: number) {
@@ -50,16 +51,22 @@ export class AppComponent implements OnInit {
   onSubmit() {
     if (this.validateForm.invalid) return;
 
+
     let text: string = this.validateForm.get('text')?.value;
     for (let i = 0; i < text.length; i++) {
+     
       let img: string | null = localStorage?.getItem(text[i].toUpperCase());
       if (typeof img === 'string') this.frames.painding.imgs.push(img);
     }
+    
 
-    console.log(this.frames.painding);
+
+    //  console.log(localStorage.getItem('B'));
+    //  console.log(localStorage.getItem('C'));
+    //  console.log(localStorage.getItem('D'));
+    //  console.log(localStorage.getItem('E'));
     this.frames.isImg = false;
-    this.validateForm.reset()
-
+    this.validateForm.reset();
   }
 
   open() {

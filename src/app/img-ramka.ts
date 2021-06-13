@@ -7,7 +7,7 @@ export interface ImgRamka {
     img_bottom: string,
     img_bottom_left: string,
     img_left: string,
-    img_left__top: string
+    img_left__top: string,
 }
 
 export interface Value {
@@ -19,4 +19,5 @@ export interface Value {
 export interface Painding {
     values: Value,
     imgs: string[],
+    
 }

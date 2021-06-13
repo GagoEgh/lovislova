@@ -3,6 +3,7 @@
     height: 100vh;
     background-color: rgb(105, 211, 211);
 }
+
 .catalog{
     display: flex;
     margin: 0 auto;
