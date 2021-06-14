@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <main class="ramka">
+  <!-- <main class="ramka">
     <div *ngIf ='frames.isImg else create'>
       <div class="wrap" [style.backgroundColor]="frames.background">
         <div class="ramka_1_ver">
@@ -72,7 +72,24 @@
     <ng-template #create>
       <app-create-img></app-create-img>
     </ng-template>
-  </main>
-
+  </main> -->
+  <div class="ramka">
+    <div *ngIf='frames.isImg else create'>
+      <div class="topFrame" >
+        <img src={{frames.frame?.img_top}} class = 'imgtr'>
+        <div class="wrap" [style.backgroundColor]="frames.background">
+          <div class="name">
+            <form [formGroup]="validateForm">
+              <input type="text" formControlName='text' maxlength="9">
+            </form>
+          </div>
+        </div>
+        <img src={{frames.frame?.img_bottom}} class = 'imgtr'>
+      </div>
+    </div>
+    <ng-template #create>
+      <app-create-img></app-create-img>
+    </ng-template>
+  </div>
 
 </header>

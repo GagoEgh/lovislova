@@ -1,8 +1,18 @@
-<div class="cm" [style.width]='size'>
+<!-- <div class="cm" [style.width]='size'>
   <p [style.left]='size'>>{{cm}}</p>
 </div>
 <div class="wrap" [style.backgroundColor]="frames.background" [style.width]='size'>
-  <div class="height" ><p>></p></div>
+  <div class="height" ><p>></p><span>60cm</span></div>
+  <div class="menu">
+    <ul>
+      <li class="list">
+        <input type="text" class="string" placeholder="վերևի գրառում" >
+      </li>
+      <li class="list">delete text</li>
+      <li class="list">change imgs</li>
+    </ul>
+    
+  </div>
   <div class="ramka_1_ver">
     <img src={{frames.frame?.img_top}} [style.width]='size'>
   </div>
@@ -38,5 +48,14 @@
 
 
 
-</div>
+</div> -->
 <!-- <button type="submit" (click)='onSubmit()' class="create">create word</button> -->
+
+   <div class="imgs">
+     <div class="im">
+       <img src={{img}} *ngFor = 'let img of frames.painding.imgs' class="letter">
+     </div>
+     
+   </div>
+    
+  

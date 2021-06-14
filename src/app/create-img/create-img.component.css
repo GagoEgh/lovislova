@@ -1,4 +1,4 @@
-.ramka{
+/* .ramka{
     margin-top: 50px;
     width: 100vw;
 }
@@ -26,7 +26,7 @@
 .height p{
     display: block;
     transform: rotate(90deg);
-    margin: 284px 0 0 -4.5px;
+    margin: 315px 0 0 -37px;
 }
 
 .wrap{
@@ -37,6 +37,30 @@
     position: relative;
 }
 
+.menu {
+    position: absolute;
+    left: -0.3vw;
+    top:1vh;
+    width: inherit;
+     border: 1px solid;
+     display:none; 
+}
+
+.menu ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    font-size: 12px;
+}
+
+.string{
+    margin-left: -1.5vw;
+    border: none;
+    border-bottom: 1px solid;
+    width: 8vw;
+}
+
+
 .ramka_1_aj_ank,.ramka_1_ver,.ramka_1_aj,.ramka_1_aj_nerqev,.ramka_1_nerqev,
 .ramka_1_nerqev_zan,.ramka_1_zax,.ramka_1_zax_van,.name{
     position: absolute;
@@ -44,7 +68,7 @@
 
 .ramka_1_zax_van{ 
     top:-4vh;
-    left:-2.6vw;
+    left:-2.1vw;
 }
 
 .ramka_1_ver{
@@ -61,7 +85,7 @@
 }
 
 .ramka_1_aj img,.ramka_1_zax img{
-  height: 290px;
+  height: 295px;
   width: 40px; 
 }
 
@@ -75,17 +99,35 @@
 }
 
 .ramka_1_nerqev_zan{
-    left: -2.6vw;
+    left: -2.1vw;
     top: 290px;
 }
 
 .ramka_1_zax{
-    left: -2.6vw;
-    top:0.3vh;
+    left: -2.1vw;
 }
 
 .img {
-    padding: 80px 0 0 20px;
-     width: 70%;
+    padding: 80px 0 0 30%;
+     width: 80%;
     height: 220px;
+}
+ */
+
+.imgs{
+    width: fit-content;
+    display: flex;
+    border: 1px solid;
+    padding: 50px;
+    margin: 0 auto;
+}
+
+.im{
+    display: flex;
+    border: 1px solid;
+}
+
+.imgs img{
+    max-width: 100px;
+    padding: 5px;
 }

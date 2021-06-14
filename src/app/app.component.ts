@@ -45,28 +45,44 @@ export class AppComponent implements OnInit {
 
   imgFone(filter: Value) {
     this.frames.painding.values = filter;
+    console.log('imgFone',this.frames.painding.values);
 
+      this.changeColorImg();
   }
 
+
+  changeColorImg(){  
+    this.frames.text = this.validateForm.get('text')?.value;
+    if (this.frames.painding.values.withandblack) {
+      this.frames.painding.imgs = [];
+      for (let i = 0; i < this.frames.text?.length; i++) {
+        let img: string | null = localStorage?.getItem(this.frames.text[i].toUpperCase());
+        if (typeof img === 'string') this.frames.painding.imgs.push(img);
+      }
+    }
+
+    if(this.frames.painding.values.colored){
+      this.frames.painding.imgs = [];
+      for (let i = 0; i < this.frames.text?.length; i++) {
+       this.frames.painding.imgs.push('./assets/world_img/2.jpg');
+      }
+    }
+
+    if(this.frames.painding.values.sepia){
+      this.frames.painding.imgs = [];
+      for (let i = 0; i < this.frames.text?.length; i++) {
+       this.frames.painding.imgs.push('./assets/world_img/8.jpg');
+      }
+    }
+    console.log(this.frames.painding);
+  }
   onSubmit() {
     if (this.validateForm.invalid) return;
 
+    this.changeColorImg();
 
-    let text: string = this.validateForm.get('text')?.value;
-    for (let i = 0; i < text.length; i++) {
-     
-      let img: string | null = localStorage?.getItem(text[i].toUpperCase());
-      if (typeof img === 'string') this.frames.painding.imgs.push(img);
-    }
-    
-
-
-    //  console.log(localStorage.getItem('B'));
-    //  console.log(localStorage.getItem('C'));
-    //  console.log(localStorage.getItem('D'));
-    //  console.log(localStorage.getItem('E'));
     this.frames.isImg = false;
-    this.validateForm.reset();
+
   }
 
   open() {

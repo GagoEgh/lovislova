@@ -7,7 +7,7 @@ import { ImgRamka, Painding } from './img-ramka'
 export class FramesServService {
     frame: any;
     index = 0;
-   
+    text:string = '';
     background = "white";
     isImg = true;
     painding: Painding = {
@@ -18,7 +18,6 @@ export class FramesServService {
         },
         imgs: [],
     
-
     };
 
     div = [{
