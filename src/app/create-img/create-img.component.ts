@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 import { FramesServService } from '../frames-serv.service';
 
 
@@ -8,18 +10,29 @@ import { FramesServService } from '../frames-serv.service';
   styleUrls: ['./create-img.component.css']
 })
 export class CreateImgComponent implements OnInit {
-  size:string = '';
-  cm:string = '';
-  constructor(public frames:FramesServService) { }
+  isCreate = true;
+  lettering: string = '';
+  validateForm: FormGroup = new FormGroup({});
+  @Output() mainApp: EventEmitter<boolean> = new EventEmitter();
+  constructor(public frames: FramesServService, private form: FormBuilder) { }
 
   ngOnInit(): void {
-  
-    
-    // this.size =  ((this.frames.painding.imgs.length*100 + this.frames.painding.imgs.length*8*100+2)/100)+'vw';
-    // let p = this.size.slice(0,this.size.length-2);
-    // this.cm = Math.round(+p*15*0.02635872298)+'sm';
-
-    
+    this.validateForm = this.form.group(
+      { text: [null] }
+    )
+    console.log('text', this.validateForm.get('text')?.value)
   }
+  getApp(isBool: boolean) {
+
+    this.mainApp.emit(isBool);
+  }
+
+  showlettering() {
+    if (this.validateForm.get('text')?.value) {
+        this.lettering = this.validateForm.get('text')?.value ;
+    }
+    return this.lettering
+  }
+
 
 }

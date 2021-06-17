@@ -54,8 +54,8 @@
     width: 150px;
 }
 
-.bottom {
-   border-bottom: 2px solid rgb(25, 156, 156);
+.box-content {
+   box-shadow: 1px 0 2px 1px white;
 }
 
 .backgrounds{
@@ -138,122 +138,15 @@
 
 /* RAMKA */
 
-/* 
-
-.ramka{
-    margin-top: 50px;
-    position: relative;
-}
-
-.wrap{
-    height: 290px;
-    width: 45%;
-    margin: 0 auto;
-}
-
-.ramka_1_aj_ank,.ramka_1_ver,.ramka_1_aj,.ramka_1_aj_nerqev,.ramka_1_nerqev,
-.ramka_1_nerqev_zan,.ramka_1_zax,.ramka_1_zax_van,.name{
-    position: absolute;
-}
-
-.ramka_1_ver{
-    left: 27.9%;
-    width: 72.1%;
-    top: -5%;
-}
-
-.ramka_1_ver img,.ramka_1_nerqev img{
-    width: 60%;
-    height: 40px;
-}
-
-.ramka_1_aj_ank img, .ramka_1_aj_nerqev img, .ramka_1_nerqev_zan img,.ramka_1_zax_van img{
-    width: 100%;
-    height: 40px;
-}
-
-.ramka_1_aj_ank{ 
-    left:71%;
-    top: -5%;
-}
-
-
-.ramka_1_aj{
-    left: 71%;
-    top:20px;
-}
-
-.ramka_1_aj img,.ramka_1_zax img{
-    height: 270px;
-    width: 100%;
-}
-
-.ramka_1_aj_nerqev{
-    left: 71%;
-    top: 290px;
-}
-
-.ramka_1_nerqev{
-    width: 72.1%;
-    left: 27.9%;
-    top: 290px;
-}
-
-.ramka_1_nerqev_zan{
-    left:25.8%;
-    top:290px;
-}
-
-.ramka_1_zax{
-    left:25.8%;
-    top:20px;
-}
-
-.ramka_1_zax_van{
-    left:25.8%;
-    top:-5%;
-}
-
-.name {
-    width: 34%;
-    left:33%;
-    top:100px;
-}
-
-.name input{
-    width: 100%;
-    height: 140px;
-    font-size: 310%;
-    text-align: center;
-}
-
-.create{
-    position: absolute;
-    left: 43%;
-    top: 120%;
-    width: 180px;
-    padding: 10px;
-    text-align: center;
-    text-transform:uppercase;
-    border-radius: 15px;
-    background-color: goldenrod;
-    border: none;
-    color: rgb(88, 86, 86);
-    letter-spacing: 1px;
-    transition: .5s;
-}
-
-.create:active{
-    color: white;
-    background-color:rgb(119, 88, 9);
-    box-shadow: 1px 2px 1px rgb(77, 57, 7);
-    transition: 0.5s;
-} 
-*/
 .block{
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
+    width: fit-content;   
+    transform-origin: center center;
+    position: relative;
+    left: 50%;
+    top:50px; 
 }
 
 .wrap{
@@ -267,14 +160,15 @@
 }
 
 .letter{
-    font-size: 310%;
     text-align: center;
-    padding: 50px;
+    padding: 40px;
 }
 
 .letter input{
     text-align: center;
     color: rgb(24, 24, 24);
+    padding: 20px;
+    font-size: 20px;
 }
 
 .top,.bottom{
@@ -286,16 +180,15 @@
     flex-direction: column;
 }
 
-.squrl,.squrl-l{
+.squrl{
     height: 40px;
     width: 40px;
     flex-grow: 0;
 }
 
-.reight-he,.left-he{
+.reight-he{
     flex-grow: 1;
 }
-
 
 .create{
     margin-top: 30px;

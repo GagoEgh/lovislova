@@ -1,61 +1,26 @@
-<!-- <div class="cm" [style.width]='size'>
-  <p [style.left]='size'>>{{cm}}</p>
-</div>
-<div class="wrap" [style.backgroundColor]="frames.background" [style.width]='size'>
-  <div class="height" ><p>></p><span>60cm</span></div>
+<div class="im" [style.backgroundColor]="frames.background.color">
+
   <div class="menu">
-    <ul>
-      <li class="list">
-        <input type="text" class="string" placeholder="վերևի գրառում" >
-      </li>
-      <li class="list">delete text</li>
-      <li class="list">change imgs</li>
-    </ul>
-    
-  </div>
-  <div class="ramka_1_ver">
-    <img src={{frames.frame?.img_top}} [style.width]='size'>
-  </div>
-  <div class="ramka_1_aj_ank" [style.left]='size'>
-    <img src={{frames.frame?.img_top_rigth}}>
-  </div>
-  <div class="ramka_1_aj" [style.left]='size'>
-    <img src={{frames.frame?.img_rigth}}>
-  </div>
-  <div class="ramka_1_aj_nerqev" [style.left]='size'>
-    <img src={{frames.frame?.img_rigth_bottom}}>
-  </div>
-  <div class="ramka_1_nerqev">
-    <img src={{frames.frame?.img_bottom}} [style.width]='size'>
-  </div>
-  <div class="ramka_1_nerqev_zan">
-    <img src={{frames.frame?.img_bottom_left}}>
-  </div>
-  <div class="ramka_1_zax">
-    <img src={{frames.frame?.img_left}}>
-  </div>
-  <div class="ramka_1_zax_van">
-    <img src={{frames.frame?.img_left__top}}>
-  </div>
-  <div *ngFor='let img of frames.painding.imgs'>
+    <div class="lettering" *ngIf='frames.painding.imgs.length>4'>
+      <form [formGroup]="validateForm" >
+        <input type="text" [value]="lettering" 
+          [style.backgroundColor]="frames.background.color">
 
-    <img [src]='img' class="img">
+      </form>
+      <!-- <div *ngIf = "showlettering()">
+        <p>{{lettering}}</p>
+      </div> -->
 
-
+    </div>
+    <div class="delete">
+      <p class="bottom" (click)="getApp(true)">delete text</p>
+    </div>
+    <div class="change ">
+      <p class="bottom">poxel nkarnery</p>
+    </div>
+  </div>
+  <div class="imgs">
+    <img src={{img}} *ngFor='let img of frames.painding.imgs' class="letter-img">
   </div>
 
-
-
-
-
-</div> -->
-<!-- <button type="submit" (click)='onSubmit()' class="create">create word</button> -->
-
-   <div class="imgs">
-     <div class="im">
-       <img src={{img}} *ngFor = 'let img of frames.painding.imgs' class="letter">
-     </div>
-     
-   </div>
-    
-  
+</div>

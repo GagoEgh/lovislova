@@ -3,7 +3,7 @@
     <div class="carusel">
       <ul class="imageObject">
         <li *ngFor="let img of frames.imageObject,let i=index">
-          <div [ngClass]="{'bottom': getImgId(i)}">
+          <div [ngClass]="{'box-content': getImgId(i)}" class="mg-content">
             <img src={{img.thumbImage}} class="thumbImage" (click)="imageClick(i)">
           </div>
           <ul class="card">
@@ -15,66 +15,21 @@
       </ul>
     </div>
     <div class="backgrounds">
-      <div class="white" [style.backgroundColor]='item.color' (click)="changeBg(item.color)"
-        *ngFor="let item of frames.div">
+      <div class="white" *ngFor="let item of frames.div" [style.backgroundColor]='item.color' (click)="changeBg(item)"
+        [ngClass]="{'box-content':frames.background.id=== item.id}">
         <div class="text">{{item.color}}</div>
       </div>
     </div>
     <div class="imgColor">
-      <div>
-
-      </div>
       <div class="colorless" [style.backgroundColor]='block.color' *ngFor='let block of frames.imgColor'
-        (click)="imgFone(block.values)">
+        (click)="imgFone(block)" [ngClass]="{'box-content': block.id === frames.painding.id}">
         <div class="lessWhite" [style.backgroundColor]='block.child'></div>
         <p class="info">{{block.text}}</p>
       </div>
     </div>
   </div>
-  <!-- 
-  <main class="ramka">
-    <div *ngIf ='frames.isImg else create'>
-      <div class="wrap" [style.backgroundColor]="frames.background">
-        <div class="ramka_1_ver">
-          <img src={{frames.frame?.img_top}}>
-        </div>
-        <div class="ramka_1_aj_ank">
-          <img src={{frames.frame?.img_top_rigth}}>
-        </div>
-        <div class="ramka_1_aj">
-          <img src={{frames.frame?.img_rigth}}>
-        </div>
-        <div class="ramka_1_aj_nerqev">
-          <img src={{frames.frame?.img_rigth_bottom}}>
-        </div>
-        <div class="ramka_1_nerqev">
-          <img src={{frames.frame?.img_bottom}}>
-        </div>
-        <div class="ramka_1_nerqev_zan">
-          <img src={{frames.frame?.img_bottom_left}}>
-        </div>
-        <div class="ramka_1_zax">
-          <img src={{frames.frame?.img_left}}>
-        </div>
-        <div class="ramka_1_zax_van">
-          <img src={{frames.frame?.img_left__top}}>
-        </div>
-        <div class="name">
-          <form [formGroup]="validateForm">
-            <input type="text" formControlName='text' maxlength="9">
-          </form>
-
-        </div>
-        <p class="btn" (click)="open()">ինչպես գրել բառ, տառ և սիմվոլ</p>
-      </div>
-      <button type="submit" (click)='onSubmit()' class="create">create word</button>
-    </div>
-    <ng-template #create>
-      <app-create-img></app-create-img>
-    </ng-template>
-  </main> -->
-  <div *ngIf='frames.isImg else create' class="block">
-    <div class="wrap">
+  <div  #block class="block" [ngStyle]="setStyle()">
+    <div class="wrap" >
       <div class="reight">
         <div class="squrl" [style.background-image]="'url(' + frames.frame?.img_left__top + ')'"></div>
         <div class="reight-he" [style.background-image]="'url(' + frames.frame?.img_left + ')'"></div>
@@ -82,24 +37,24 @@
       </div>
       <div class="content">
         <div class="top" [style.background-image]="'url(' + frames.frame?.img_top + ')'"></div>
-        <div class="letter" [style.backgroundColor]="frames.background">
+        <div class="letter" [style.backgroundColor]="frames.background.color" *ngIf='frames.isImg else create'>
           <form [formGroup]="validateForm">
-            <input type="text" formControlName='text' maxlength="9">
+            <input type="text" formControlName='text' maxlength="9" placeholder="ԳՐԵՔ ԲԱՌԸ">
           </form>
         </div>
         <div class="bottom" [style.background-image]="'url(' +frames.frame?.img_bottom + ')'">
-          <p class="btn" (click)="open()">ինչպես գրել բառ, տառ և սիմվոլ</p>
+          <p class="btn" (click)="open()" *ngIf='frames.isImg'>ինչպես գրել բառ, տառ և սիմվոլ</p>
         </div>
       </div>
       <div class="left">
-        <div class="squrl-l" [style.background-image]="'url(' + frames.frame?.img_top_rigth + ')'"></div>
-        <div class="left-he" [style.background-image]="'url(' + frames.frame?.img_rigth + ')'"></div>
-        <div class="squrl-l" [style.background-image]="'url(' + frames.frame?.img_rigth_bottom + ')'"></div>
+        <div class="squrl" [style.background-image]="'url(' + frames.frame?.img_top_rigth + ')'"></div>
+        <div class="reight-he" [style.background-image]="'url(' + frames.frame?.img_rigth + ')'"></div>
+        <div class="squrl" [style.background-image]="'url(' + frames.frame?.img_rigth_bottom + ')'"></div>
       </div>
     </div>
     <button type="submit" (click)='onSubmit()' class="create">create word</button>
   </div>
   <ng-template #create>
-    <app-create-img></app-create-img>
+    <app-create-img (mainApp)="deletImg($event)"></app-create-img>
   </ng-template>
 </header>

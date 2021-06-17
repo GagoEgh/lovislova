@@ -1,133 +1,37 @@
-/* .ramka{
-    margin-top: 50px;
-    width: 100vw;
-}
+ .im{
+     width: fit-content;
+     display: flex;
+     flex-direction: column;
+     padding: 20px;
+ }
 
-.cm{
-    height: 30px;
-    margin: 50px auto;
-    border-top: 1px solid;
-    position: relative;
-}
+ .menu{
+     display: flex;
+     justify-content: space-around;
+     font-size: 12px;
+     font-weight: 400;
+ }
 
-.cm p{
-    position: absolute;
-    top:-1.74vh;
-}
-
-.height{
-    border-left: 1px solid;
-    height: 290px;
-    position: absolute;
-    left: -5vw;
-    top: 0;
-}
-
-.height p{
-    display: block;
-    transform: rotate(90deg);
-    margin: 315px 0 0 -37px;
-}
-
-.wrap{
-    height: 290px;
-    display: flex;
-    margin: 50px auto;
-    justify-content: space-around;
-    position: relative;
-}
-
-.menu {
-    position: absolute;
-    left: -0.3vw;
-    top:1vh;
-    width: inherit;
-     border: 1px solid;
-     display:none; 
-}
-
-.menu ul{
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    font-size: 12px;
-}
-
-.string{
-    margin-left: -1.5vw;
+ .lettering input{
     border: none;
-    border-bottom: 1px solid;
-    width: 8vw;
-}
+    outline: none;
+    border-bottom: 0.1px solid;
+    opacity: 0.7;
+    width: 80px;
+ }
 
-
-.ramka_1_aj_ank,.ramka_1_ver,.ramka_1_aj,.ramka_1_aj_nerqev,.ramka_1_nerqev,
-.ramka_1_nerqev_zan,.ramka_1_zax,.ramka_1_zax_van,.name{
-    position: absolute;
-}
-
-.ramka_1_zax_van{ 
-    top:-4vh;
-    left:-2.1vw;
-}
-
-.ramka_1_ver{
-    left: 0;
-    top: -4vh;
-}
-
-.ramka_1_ver img,.ramka_1_nerqev img{
-    height: 40px;
-}
-
-.ramka_1_aj_ank{ 
-    top:-4vh;
-}
-
-.ramka_1_aj img,.ramka_1_zax img{
-  height: 295px;
-  width: 40px; 
-}
-
-.ramka_1_aj_nerqev{
-    top: 290px;
-}
-
-.ramka_1_nerqev{
-    top: 290px;
-    left: 0;
-}
-
-.ramka_1_nerqev_zan{
-    left: -2.1vw;
-    top: 290px;
-}
-
-.ramka_1_zax{
-    left: -2.1vw;
-}
-
-.img {
-    padding: 80px 0 0 30%;
-     width: 80%;
-    height: 220px;
-}
- */
-
-.imgs{
+ .imgs{
     width: fit-content;
     display: flex;
-    border: 1px solid;
-    padding: 50px;
-    margin: 0 auto;
-}
+ }
 
-.im{
-    display: flex;
-    border: 1px solid;
-}
+ .letter-img{
+     max-width: 100px;
+     height: 180px;
+     padding: 12px;
+ }
 
-.imgs img{
-    max-width: 100px;
-    padding: 5px;
-}
+ .bottom{
+     border-bottom: 1px dashed;
+     cursor: pointer;
+ }

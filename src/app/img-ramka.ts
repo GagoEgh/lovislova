@@ -19,5 +19,6 @@ export interface Value {
 export interface Painding {
     values: Value,
     imgs: string[],
+    id:number
     
 }

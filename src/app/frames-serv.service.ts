@@ -8,7 +8,7 @@ export class FramesServService {
     frame: any;
     index = 0;
     text:string = '';
-    background = "white";
+
     isImg = true;
     painding: Painding = {
         values: {
@@ -17,18 +17,28 @@ export class FramesServService {
             sepia: false
         },
         imgs: [],
+        id:1
     
     };
 
+    background={
+        id:1,
+        color: "gainsboro"
+    };
+
     div = [{
-        color: "white"
+        id:1,
+        color: "gainsboro"
     }, {
+        id:2,
         color: 'grey'
     }, {
+        id:3,
         color: 'moccasin'
     }];
 
     imgColor = [{
+        id:1,
         color: 'black',
         text: 'բոլոր նկարները անգույն են',
         child: 'white',
@@ -38,6 +48,7 @@ export class FramesServService {
             sepia: false
         }
     }, {
+        id:2,
         color: 'red',
         text: 'բոլոր նկարները գունավոր են',
         child: 'palevioletred',
@@ -47,6 +58,7 @@ export class FramesServService {
             sepia: false
         }
     }, {
+        id:3,
         color: 'grey',
         text: 'բոլոր նկարները սեպիա են',
         child: 'grey',
