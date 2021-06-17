@@ -8,6 +8,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalContentComponent} from './ngbd-modal-content/ngbd-modal-content.component';
 import { CreateImgComponent } from './create-img/create-img.component';
+import { MouseEventDirective } from './create-img/mouse-event.directive';
 
 
 
@@ -15,7 +16,8 @@ import { CreateImgComponent } from './create-img/create-img.component';
   declarations: [
     AppComponent,
     NgbdModalContentComponent,
-    CreateImgComponent
+    CreateImgComponent,
+    MouseEventDirective
   ],
   imports: [
     BrowserModule,

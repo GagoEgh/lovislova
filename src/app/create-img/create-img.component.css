@@ -10,8 +10,13 @@
      justify-content: space-around;
      font-size: 12px;
      font-weight: 400;
+     opacity: 0;
+     transition: 0.4s;
  }
 
+ .im:hover .menu{
+    opacity: 1;
+ }
  .lettering input{
     border: none;
     outline: none;

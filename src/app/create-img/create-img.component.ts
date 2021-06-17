@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, Renderer2 } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FramesServService } from '../frames-serv.service';
 
@@ -14,24 +14,18 @@ export class CreateImgComponent implements OnInit {
   lettering: string = '';
   validateForm: FormGroup = new FormGroup({});
   @Output() mainApp: EventEmitter<boolean> = new EventEmitter();
-  constructor(public frames: FramesServService, private form: FormBuilder) { }
+  constructor(public frames: FramesServService, private form: FormBuilder,) { }
+    
 
   ngOnInit(): void {
     this.validateForm = this.form.group(
-      { text: [null] }
+      { text: [null,[Validators.required]] }
     )
-    console.log('text', this.validateForm.get('text')?.value)
+  
   }
+
   getApp(isBool: boolean) {
-
     this.mainApp.emit(isBool);
-  }
-
-  showlettering() {
-    if (this.validateForm.get('text')?.value) {
-        this.lettering = this.validateForm.get('text')?.value ;
-    }
-    return this.lettering
   }
 
 

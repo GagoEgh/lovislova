@@ -52,7 +52,7 @@
         <div class="squrl" [style.background-image]="'url(' + frames.frame?.img_rigth_bottom + ')'"></div>
       </div>
     </div>
-    <button type="submit" (click)='onSubmit()' class="create">create word</button>
+    <button type="submit" (click)='onSubmit()' class="create" *ngIf='frames.isImg'>create word</button>
   </div>
   <ng-template #create>
     <app-create-img (mainApp)="deletImg($event)"></app-create-img>

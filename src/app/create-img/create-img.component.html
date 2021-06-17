@@ -1,16 +1,18 @@
 <div class="im" [style.backgroundColor]="frames.background.color">
 
   <div class="menu">
-    <div class="lettering" *ngIf='frames.painding.imgs.length>4'>
-      <form [formGroup]="validateForm" >
-        <input type="text" [value]="lettering" 
-          [style.backgroundColor]="frames.background.color">
-
+    <div class="lettering" *ngIf='frames.painding.imgs.length>3' appMouseEvent>
+      <form [formGroup]="validateForm">
+        <input type="text" formControlName='text'
+        [style.backgroundColor]="frames.background.color">
+        <!-- <p *ngIf="validateForm.touched && validateForm.dirty,else letter">
+          {{validateForm.get('text')?.value}}
+        </p>
+        <ng-template #letter>
+          <input type="text" formControlName='text'
+           [style.backgroundColor]="frames.background.color">
+        </ng-template> -->
       </form>
-      <!-- <div *ngIf = "showlettering()">
-        <p>{{lettering}}</p>
-      </div> -->
-
     </div>
     <div class="delete">
       <p class="bottom" (click)="getApp(true)">delete text</p>
