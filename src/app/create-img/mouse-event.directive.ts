@@ -7,12 +7,12 @@ export class MouseEventDirective {
 
   constructor(private el: ElementRef, private r: Renderer2) { }
 
-  @HostListener('click',['$event'])
-  onClick(event:Event){
-      console.log(event.target)
-  }
+  
+
   @HostListener('mouseenter' )
   onMouseEnter() {
+   // this.r.setStyle(this.el.nativeElement, 'opacity','1')
+   
     
   }
 

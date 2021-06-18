@@ -1,25 +1,21 @@
 <div class="im" [style.backgroundColor]="frames.background.color">
 
-  <div class="menu">
-    <div class="lettering" *ngIf='frames.painding.imgs.length>3' appMouseEvent>
-      <form [formGroup]="validateForm">
-        <input type="text" formControlName='text'
-        [style.backgroundColor]="frames.background.color">
-        <!-- <p *ngIf="validateForm.touched && validateForm.dirty,else letter">
-          {{validateForm.get('text')?.value}}
-        </p>
-        <ng-template #letter>
-          <input type="text" formControlName='text'
-           [style.backgroundColor]="frames.background.color">
-        </ng-template> -->
-      </form>
+  <div class="menu" #myHover>
+
+    <div class="change ">
+      <p class="bottom">poxel nkarnery</p>
     </div>
     <div class="delete">
       <p class="bottom" (click)="getApp(true)">delete text</p>
     </div>
-    <div class="change ">
-      <p class="bottom">poxel nkarnery</p>
+    <div class="lettering" *ngIf='frames.painding.imgs.length>3' >
+      <form [formGroup]="validateForm">
+        <input type="text" formControlName='text' value="validateForm.get('text').value"
+        [style.backgroundColor]="frames.background.color" class="inStyle" #letter>
+      </form>
     </div>
+  
+   
   </div>
   <div class="imgs">
     <img src={{img}} *ngFor='let img of frames.painding.imgs' class="letter-img">
