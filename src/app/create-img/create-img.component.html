@@ -1,24 +1,32 @@
 <div class="im" [style.backgroundColor]="frames.background.color">
 
   <div class="menu" #myHover>
-
-    <div class="change ">
+    <div class="change " #change (click)='changeImg()'>
       <p class="bottom">poxel nkarnery</p>
     </div>
-    <div class="delete">
+    <div class="delete" #delete>
       <p class="bottom" (click)="getApp(true)">delete text</p>
     </div>
-    <div class="lettering" *ngIf='frames.painding.imgs.length>3' >
+    <div class="lettering" *ngIf='frames.painding.imgs.length>3'>
       <form [formGroup]="validateForm">
-        <input type="text" formControlName='text' value="validateForm.get('text').value"
-        [style.backgroundColor]="frames.background.color" class="inStyle" #letter>
+        <input type="text" formControlName='text' [style.backgroundColor]="frames.background.color" class="inStyle"
+          #letter maxlength="9">
       </form>
     </div>
-  
-   
   </div>
+
   <div class="imgs">
     <img src={{img}} *ngFor='let img of frames.painding.imgs' class="letter-img">
   </div>
-
+  <div class="menu" #menu>
+    <div>
+      <form [formGroup]='bottomText'>
+        <input type="text" formControlName='btmtx' class="inStyle" #btletter
+        maxlength="9" [style.backgroundColor]="frames.background.color">
+      </form>
+    </div>
+    <div>
+      <p>save</p>
+    </div>
+  </div>
 </div>

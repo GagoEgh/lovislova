@@ -87,6 +87,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         let img: string | null = localStorage?.getItem(this.frames.text[i].toUpperCase())
         if (typeof img === 'string') this.frames.painding.imgs.push(img);
       }
+      
     }
 
     if (this.frames.painding.values.colored) {

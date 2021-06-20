@@ -17,12 +17,15 @@
 
 .font{
    font-family:cursive;
-   border: none;
-   outline: none
+   border: none !important;
+   outline: none;
+   cursor: text;
+   width: 70px;
 }
 
 .cursor{
     cursor: pointer;
+    margin-left: -13px;
 }
 
 .inStyle{
@@ -30,7 +33,7 @@
     outline: none;
     border-bottom: 0.1px solid;
     opacity: 0.7;
-    width: 80px;
+    width: 70px;
 }
 
 .imgs{
