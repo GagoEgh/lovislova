@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, } from '@angular/forms';
 
 import { FramesServService } from '../frames-serv.service';
 
+interface Letter {
+  count: number,
+  lettering: FormGroup
+}
 
 @Component({
   selector: 'app-create-img',
@@ -10,17 +14,16 @@ import { FramesServService } from '../frames-serv.service';
   styleUrls: ['./create-img.component.css']
 })
 export class CreateImgComponent implements OnInit {
-  count = 0;
   isCreate = true;
   par: ElementRef | undefined;
   span: ElementRef | undefined;
   bottomText: FormGroup = new FormGroup({});
   validateForm: FormGroup = new FormGroup({});
-  topLettering = {
+  topLettering: Letter = {
     count: 0,
     lettering: this.validateForm.get('text')?.value
   };
-  bottomLettering = {
+  bottomLettering: Letter = {
     count: 0,
     lettering: this.bottomText.get('btmtx')?.value
   }
@@ -36,20 +39,27 @@ export class CreateImgComponent implements OnInit {
 
   createEl(valid: any, form: string, elem: ElementRef | undefined) {
 
-    
-      if (valid.get(form)?.value) {
-        let form = this.ren.parentNode(elem?.nativeElement);
-        this.ren.removeClass(elem?.nativeElement, 'inStyle');
-        // span
-        let close = this.ren.createText('X');
-        this.span = this.ren.createElement('span');
-        this.ren.addClass(this.span, 'cursor')
-        this.ren.appendChild(this.span, close);
-        this.ren.appendChild(form, this.span);
-        this.ren.addClass(elem?.nativeElement, 'font');
-        
-      }
-    
+
+    if (valid.get(form)?.value) {
+      let form = this.ren.parentNode(elem?.nativeElement);
+      this.ren.removeClass(elem?.nativeElement, 'inStyle');
+      // span
+      let close = this.ren.createText('X');
+      this.span = this.ren.createElement('span');
+      this.ren.addClass(this.span, 'cursor')
+      this.ren.appendChild(this.span, close);
+      this.ren.appendChild(form, this.span);
+      this.ren.addClass(elem?.nativeElement, 'font');
+      console.log(form);
+
+      //  this.topLettering.count++;
+      //  this.bottomLettering.count++;
+
+      console.log('top', this.topLettering.count);
+      console.log('botom', this.bottomLettering.count)
+    }
+
+
   }
 
   changeImg() {
@@ -66,9 +76,8 @@ export class CreateImgComponent implements OnInit {
     this.ren.addClass(this.letter?.nativeElement, 'inStyle');
     this.validateForm.reset();
     this.bottomText.reset();
-    this.topLettering.count=0;
-    this.bottomLettering.count=0;
-    // this.count = 0;
+    this.topLettering.count = 0;
+    this.bottomLettering.count = 0;
 
   }
 
@@ -84,23 +93,34 @@ export class CreateImgComponent implements OnInit {
     })
 
     this.ren.listen(parent, 'mouseleave', () => {
-      if(this.topLettering.count<1){
-        this.createEl(this.validateForm, 'text', this.letter);
-        this.topLettering.count++;
+      if (this.validateForm.get('text')?.value) {
+        if (this.topLettering.count < 1) {
+          this.createEl(this.validateForm, 'text', this.letter);
+          this.topLettering.count += 1;
+          console.log('top leave', this.topLettering.count)
+        }
       }
-        this.createEl(this.bottomText, 'btmtx', this.btletter);
 
-        
+      if (this.bottomText.get('btmtx')?.value) {
+
+
+        if (this.bottomLettering.count < 1) {
+          this.createEl(this.bottomText, 'btmtx', this.btletter);
+          this.bottomLettering.count += 1;
+          console.log(' leave botom', this.bottomLettering.count)
+        }
+      }
+
+
+
+
       if (this.span) {
         this.ren.listen(this.span, 'click', () => {
-          this.changeElem()
-          if(this.topLettering.count<1){
-            this.createEl(this.validateForm, 'text', this.letter);
-            this.topLettering.count++;
-          }
-          
+          // this.changeElem()
 
-          this.createEl(this.btletter, 'btmtx', this.btletter);
+          // this.createEl(this.validateForm, 'text', this.letter,this.topLettering.count);
+
+          // this.createEl(this.btletter, 'btmtx', this.btletter,this.bottomLettering.count);
 
         })
         this.ren.setStyle(this.change?.nativeElement, 'opacity', '0');
