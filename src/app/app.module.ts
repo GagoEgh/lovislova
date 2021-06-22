@@ -12,12 +12,13 @@ import { MouseEventDirective } from './create-img/mouse-event.directive';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NgbdModalContentComponent,
     CreateImgComponent,
-    MouseEventDirective
+    MouseEventDirective,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +32,7 @@ import { MouseEventDirective } from './create-img/mouse-event.directive';
   ],
 
   providers: [],
+  exports:[CreateImgComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

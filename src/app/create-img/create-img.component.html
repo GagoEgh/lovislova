@@ -1,32 +1,62 @@
-<div class="im" [style.backgroundColor]="frames.background.color">
+<div class="im" [style.backgroundColor]="frames.background.color" (mouseleave)="onMouseleave()"
+  (mouseenter)="onMouseenter()">
 
-  <div class="menu" #myHover>
-    <div class="change " #change (click)='changeImg()'>
+  <div class="menu">
+    <div class="change " (click)='changeImg()' [style.opacity]="topLettering.isMenu?'1':'0'">
       <p class="bottom">poxel nkarnery</p>
     </div>
-    <div class="delete" #delete>
+    <div class="delete" [style.opacity]="topLettering.isMenu?'1':'0'">
       <p class="bottom" (click)="getApp(true)">delete text</p>
     </div>
-    <div class="lettering" *ngIf='frames.painding.imgs.length>3'>
+    <div class="lettering" *ngIf='frames.painding.imgs.length>3' [style.opacity]="topLettering.isForm?'1':'0'">
       <form [formGroup]="validateForm">
-        <input type="text" formControlName='text' [style.backgroundColor]="frames.background.color" class="inStyle"
-          #letter maxlength="9">
+        <input type="text" formControlName='topText' [style.backgroundColor]="frames.background.color" class="inStyle"
+          maxlength="9" [class.font]='topLettering.isSpan'>
+        <span class="cursor" *ngIf="topLettering.isSpan" (click)='deleteTopProprty()'>X</span>
       </form>
     </div>
   </div>
 
   <div class="imgs">
-    <img src={{img}} *ngFor='let img of frames.painding.imgs' class="letter-img">
+
+    <div class="bg-img" *ngFor='let img of frames.painding.imgs' [style.background-image]="'url(' + img + ')'">
+      <div class="bgr  mb-2 mr-2" > <p >ընտրել ուրիշ նկար</p></div>
+    </div>
+
   </div>
-  <div class="menu" #menu>
-    <div>
+
+  <div class="menu">
+    <div *ngIf='frames.painding.imgs.length>3' [style.opacity]="bottomLettering.isForm?'1':'0'">
       <form [formGroup]='bottomText'>
-        <input type="text" formControlName='btmtx' class="inStyle" #btletter
-        maxlength="9" [style.backgroundColor]="frames.background.color">
+        <input type="text" formControlName='btmText' class="inStyle" maxlength="9"
+          [style.backgroundColor]="frames.background.color" [class.font]="bottomLettering.isSpan">
+        <span class="cursor" *ngIf="bottomLettering.isSpan" (click)="deleteBottomProprty()">X</span>
       </form>
     </div>
-    <div>
-      <p>save</p>
+    <div class="save" [style.opacity]="bottomLettering.isMenu?'1':'0'">
+      <p class="bottom">save</p>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
