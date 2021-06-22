@@ -1,7 +1,10 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FramesServService } from '../frames-serv.service';
+
+import { Painding } from '../img-ramka';
+import { ImgCatalogComponent } from './img-catalog/img-catalog.component';
 
 
 interface Letter {
@@ -117,39 +120,8 @@ export class CreateImgComponent implements OnInit {
     this.mainApp.emit(isBool);
   }
 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  open() {
+    const modalRef = this.modalService.open(ImgCatalogComponent);
+    // modalRef.componentInstance.name = 'World';
+  }
 }

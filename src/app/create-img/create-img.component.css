@@ -8,7 +8,7 @@
  .menu{
      display: flex;
      justify-content: space-between;
-       flex-direction: row-reverse;
+    flex-direction: row-reverse;
     font-size: 12px;
     font-weight: 400;
     transition: 0.4s;

@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalContentComponent} from './ngbd-modal-content/ngbd-modal-content.component';
 import { CreateImgComponent } from './create-img/create-img.component';
 import { MouseEventDirective } from './create-img/mouse-event.directive';
+import { ImgCatalogComponent } from './create-img/img-catalog/img-catalog.component';
 
 
 
@@ -19,6 +20,7 @@ import { MouseEventDirective } from './create-img/mouse-event.directive';
     NgbdModalContentComponent,
     CreateImgComponent,
     MouseEventDirective,
+    ImgCatalogComponent,
   ],
   imports: [
     BrowserModule,

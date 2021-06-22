@@ -19,8 +19,8 @@
 
   <div class="imgs">
 
-    <div class="bg-img" *ngFor='let img of frames.painding.imgs' [style.background-image]="'url(' + img + ')'">
-      <div class="bgr  mb-2 mr-2" > <p >ընտրել ուրիշ նկար</p></div>
+    <div class="bg-img" *ngFor='let img of frames.painding.imgs,let i = index' [style.background-image]="'url(' + img + ')'">
+      <div class="bgr" (click)="open()"> <p >ընտրել ուրիշ նկար</p></div>
     </div>
 
   </div>
