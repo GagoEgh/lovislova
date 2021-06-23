@@ -28,8 +28,10 @@
       </div>
     </div>
   </div>
+
+
   <div  #block class="block" [ngStyle]="setStyle()">
-    <div class="wrap" >
+    <div class="myWrap" >
       <div class="reight">
         <div class="squrl" [style.background-image]="'url(' + frames.frame?.img_left__top + ')'"></div>
         <div class="reight-he" [style.background-image]="'url(' + frames.frame?.img_left + ')'"></div>
@@ -57,4 +59,22 @@
   <ng-template #create>
     <app-create-img (mainApp)="deletImg($event)"></app-create-img>
   </ng-template>
+<!-- 
+  <div class="block" #block >
+    <div class="myWrap">
+      <div class="reigth-rm">
+
+      </div>
+      <div class="content">
+        <form>
+          <input type="text">
+        </form>
+      </div>
+      <div class="left-rm">
+
+      </div>
+    </div>
+    <button type="submit" (click)='onSubmit()' class="create" *ngIf='frames.isImg'>create word</button>
+  </div> -->
+
 </header>

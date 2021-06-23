@@ -18,16 +18,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   frameWi: number | undefined;
   validateForm: FormGroup = new FormGroup({});
   @ViewChild("block", { static: false }) block: ElementRef | undefined;
-  @HostListener('window:resize', ['$event'])
+ @HostListener('window:resize', ['$event'])
   onResize() {
     this.width = this.block?.nativeElement.clientWidth | 1;
     this.heigth = this.block?.nativeElement.clientHeight | 1;
-    this.scale = window.innerWidth / (this.width * 3);
-
+    this.scale = window.innerWidth / this.width -0.4;
+    console.log(this.scale)
   }
   constructor(public frames: FramesServService, private modalService: NgbModal, private form: FormBuilder) { }
   ngAfterViewInit() {
-    this.onResize();
+   
   }
 
   ngOnInit(): void {
@@ -43,16 +43,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   }
   public setStyle() {
-    // let scale;
-    // if (window.innerWidth <= 768) {
-    //   scale = this.scale
-    // } else {
-    //   scale = 1.5
-    // }
     let style = {
-      transform: "translate(-50%, 50px)" + "scale(" + this.scale + ")"
+      transform: "translate(-50%, 10%)" + "scale(" + this.scale + ")"
     }
 
+   
     return style
   }
   imageClick($event: number) {
