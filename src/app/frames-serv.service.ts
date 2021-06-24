@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ImgRamka, Painding } from './img-ramka'
+import { Api, ImgRamka, Painding } from './img-ramka'
 
 @Injectable({
     providedIn: 'root'
@@ -7,65 +8,98 @@ import { ImgRamka, Painding } from './img-ramka'
 export class FramesServService {
     frame: any;
     index = 0;
-    text:string = '';
-
+    text: string = '';
     isImg = true;
+
+    api: Api = {
+        worldApi: 'http://sirun-bar-api.annaniks.com',
+        api_utils: '/utils',
+        api_bgr: '/background/',
+        api_frame: '/frame/',
+        api_color: '/color/',
+        api_category: '/category/',
+        api_character: '/character/',
+        api_created_frame_category: '/created-frame-category/',
+        api_promocode: '/promocode/'
+    }
+
+    
+    background:any = {
+        // id: 1,
+        // color: "gainsboro"
+        // id:null,
+        color:null,
+        name:null,
+        image:null
+    };
+
+    // div = [{
+    //     id: 1,
+    //     color: "gainsboro"
+    // }, {
+    //     id: 2,
+    //     color: 'grey'
+    // }, {
+    //     id: 3,
+    //     color: 'moccasin'
+    // }];
+    div:any= [];
     painding: Painding = {
         values: {
             colored: false,
             withandblack: true,
-            sepia: false
+            sepia: false,
+            color: 'black',
+            child: 'white',
         },
         imgs: [],
-        id:1
-    
-    };
+        id: 2
 
-    background={
-        id:1,
-        color: "gainsboro"
     };
-
-    div = [{
-        id:1,
-        color: "gainsboro"
-    }, {
-        id:2,
-        color: 'grey'
-    }, {
-        id:3,
-        color: 'moccasin'
-    }];
 
     imgColor = [{
-        id:1,
-        color: 'black',
-        text: 'բոլոր նկարները անգույն են',
-        child: 'white',
+        ceys: {
+            id: null,
+            name_en: null,
+            name_hy: null,
+            name_ru: null
+        },
         values: {
             colored: false,
             withandblack: true,
-            sepia: false
+            sepia: false,
+            color: 'black',
+            child: 'white',
         }
+
     }, {
-        id:2,
-        color: 'red',
-        text: 'բոլոր նկարները գունավոր են',
-        child: 'palevioletred',
+   
+        ceys: {
+            id: null,
+            name_en: null,
+            name_hy: null,
+            name_ru: null
+        },
         values: {
             colored: true,
             withandblack: false,
-            sepia: false
+            sepia: false,
+            color: 'red',
+            child: 'palevioletred',
         }
     }, {
-        id:3,
-        color: 'grey',
-        text: 'բոլոր նկարները սեպիա են',
-        child: 'grey',
+        ceys: {
+            id: null,
+            name_en: null,
+            name_hy: null,
+            name_ru: null
+        },
         values: {
             colored: false,
             withandblack: false,
-            sepia: true
+            sepia: true,
+            color: 'grey',
+            child: 'grey',
         }
     }];
 
@@ -181,5 +215,13 @@ export class FramesServService {
 
         }
     ]
-    constructor() { }
+    constructor(private url: HttpClient) { }
+
+    imgColorGet() {
+        return this.url.get(this.api.worldApi + this.api.api_utils + this.api.api_color)
+    }
+
+    framesFoneGet(){
+        return this.url.get(this.api.worldApi + this.api.api_utils+this.api.api_bgr)
+    }
 }

@@ -2,7 +2,7 @@
      width: fit-content;
      display: flex;
      flex-direction: column;
-     padding: 20px;
+     padding: 5px 10px;
 }
 
  .menu{
@@ -45,10 +45,10 @@
 
 .bg-img{
     width: 100px;
-    height: 180px;
+    height: 150px;
     background-position: center;
     background-size: 100% 100%;
-    margin: 5px 15px;
+    margin: 5px 10px;
     cursor: pointer;
 }
 
@@ -58,7 +58,7 @@
 
 .bgr{
     width: 100px;
-    height: 180px;
+    height: 150px;
     background-color:rgba(230, 22, 102, 0.6);
     opacity: 0;
     transition: 0.4s;

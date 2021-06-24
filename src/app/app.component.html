@@ -17,14 +17,15 @@
     <div class="backgrounds">
       <div class="white" *ngFor="let item of frames.div" [style.backgroundColor]='item.color' (click)="changeBg(item)"
         [ngClass]="{'box-content':frames.background.id=== item.id}">
-        <div class="text">{{item.color}}</div>
+        <div class="text">{{item.name}}</div>
       </div>
     </div>
     <div class="imgColor">
-      <div class="colorless" [style.backgroundColor]='block.color' *ngFor='let block of frames.imgColor'
-        (click)="imgFone(block)" [ngClass]="{'box-content': block.id === frames.painding.id}">
-        <div class="lessWhite" [style.backgroundColor]='block.child'></div>
-        <p class="info">{{block.text}}</p>
+      <div class="colorless" [style.backgroundColor]='block.values.color' *ngFor='let block of frames.imgColor' 
+      (click) ="imgFone(block)" [ngClass]="{'box-content':block?.ceys?.id=== frames?.painding?.id}">
+        <div class="lessWhite" [style.backgroundColor]='block.values.child'>
+          <p class="info">{{block?.ceys?.name_hy}}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -59,22 +60,4 @@
   <ng-template #create>
     <app-create-img (mainApp)="deletImg($event)"></app-create-img>
   </ng-template>
-<!-- 
-  <div class="block" #block >
-    <div class="myWrap">
-      <div class="reigth-rm">
-
-      </div>
-      <div class="content">
-        <form>
-          <input type="text">
-        </form>
-      </div>
-      <div class="left-rm">
-
-      </div>
-    </div>
-    <button type="submit" (click)='onSubmit()' class="create" *ngIf='frames.isImg'>create word</button>
-  </div> -->
-
 </header>

@@ -13,7 +13,9 @@ export interface ImgRamka {
 export interface Value {
     colored: boolean,
     withandblack: boolean,
-    sepia: boolean
+    sepia: boolean,
+    color: string,
+     child: string,
 }
 
 export interface Painding {
@@ -21,4 +23,16 @@ export interface Painding {
     imgs: string[],
     id:number
     
+}
+
+export interface Api{
+    worldApi:string,
+    api_utils: string,
+    api_bgr:string,
+    api_frame: string,
+    api_color: string,
+    api_category: string,
+    api_character: string,
+    api_created_frame_category: string,
+    api_promocode:string
 }

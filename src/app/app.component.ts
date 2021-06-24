@@ -10,24 +10,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  isActive = false;
+export class AppComponent implements OnInit {
+  @ViewChild("block", { static: false }) block: ElementRef | undefined;
+  validateForm: FormGroup = new FormGroup({});
+  frameWi: number | undefined;
   heigth: number | undefined;
   width: number | undefined;
   scale: number = 1;
-  frameWi: number | undefined;
-  validateForm: FormGroup = new FormGroup({});
-  @ViewChild("block", { static: false }) block: ElementRef | undefined;
- @HostListener('window:resize', ['$event'])
+  isActive = false;
+  constructor(public frames: FramesServService, private modalService: NgbModal, private form: FormBuilder) { }
+  @HostListener('window:resize', ['$event'])
   onResize() {
     this.width = this.block?.nativeElement.clientWidth | 1;
     this.heigth = this.block?.nativeElement.clientHeight | 1;
-    this.scale = window.innerWidth / this.width -0.4;
-    console.log(this.scale)
-  }
-  constructor(public frames: FramesServService, private modalService: NgbModal, private form: FormBuilder) { }
-  ngAfterViewInit() {
-   
+    this.scale = window.innerWidth / this.width - 0.4;
+    if (this.scale > 1) {
+      this.scale = 1;
+    } else {
+      this.scale = window.innerWidth / this.width - 0.4;
+    }
+
   }
 
   ngOnInit(): void {
@@ -41,15 +43,27 @@ export class AppComponent implements OnInit, AfterViewInit {
     localStorage.setItem('D', './assets/world_img/10.jpg');
     localStorage.setItem('E', './assets/world_img/13.jpg');
 
+    this.frames.imgColorGet().subscribe((el: any) => {
+      for (let i = 0; i < el.count; i++) {
+        this.frames.imgColor[i].ceys = el.results[i];
+      }
+    })
+
+    this.frames.framesFoneGet().subscribe((el: any) => {
+      this.frames.div = el.results;
+      console.log(el.results);
+      
+      this.frames.background = el.results[0];
+    })
+
   }
   public setStyle() {
     let style = {
       transform: "translate(-50%, 10%)" + "scale(" + this.scale + ")"
     }
-
-   
     return style
   }
+
   imageClick($event: number) {
     this.frames.index = $event + 1;
     this.frames.frame = this.frames.frames.find(item => item.id === this.frames.index);
@@ -60,16 +74,13 @@ export class AppComponent implements OnInit, AfterViewInit {
     return (i + 1) === this.frames.frame?.id;
   }
 
-
   changeBg(bg: any) {
-    this.frames.background.color = bg.color;
-    this.frames.background.id = bg.id;
+    this.frames.background = bg;
   }
 
-
-  imgFone(filter: any) {
-    this.frames.painding.values = filter.values;
-    this.frames.painding.id = filter.id;
+  imgFone(obj: any) {
+    this.frames.painding.values = obj.values;
+    this.frames.painding.id = obj.ceys.id;
     this.changeColorImg();
   }
 
@@ -82,7 +93,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         let img: string | null = localStorage?.getItem(this.frames.text[i].toUpperCase())
         if (typeof img === 'string') this.frames.painding.imgs.push(img);
       }
-      
+
     }
 
     if (this.frames.painding.values.colored) {
@@ -112,7 +123,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     const modalRef = this.modalService.open(NgbdModalContentComponent);
   }
 
-  deletImg(ev:boolean){
+  deletImg(ev: boolean) {
     this.frames.isImg = ev;
     this.validateForm.reset();
 

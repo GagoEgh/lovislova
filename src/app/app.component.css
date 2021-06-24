@@ -162,14 +162,14 @@
 
 .letter{
     text-align: center;
-    padding: 40px;
+    padding: 30px;
 }
 
 .letter input{
     text-align: center;
     color: #bebebe;
     padding: 20px;
-    font-size: 30px;
+    font-size: 60px;
     box-shadow: 0 0 5px rgb(0 0 0 / 35%) inset;
     border: none;
     width: 725px;
