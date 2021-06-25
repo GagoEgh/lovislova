@@ -36,3 +36,17 @@ export interface Api{
     api_created_frame_category: string,
     api_promocode:string
 }
+
+export interface FramesImg{
+    id: number,
+    name_en: string,
+    name_ru: string,
+    name_hy:string,
+    description_en: string,
+    description_ru: string,
+    description_hy: string,
+    price: number,
+    corner_image: string,
+    line_image: string,
+    show_image: string,
+}

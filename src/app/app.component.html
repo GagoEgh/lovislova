@@ -2,7 +2,7 @@
   <div class="catalog">
     <div class="carusel">
       <ul class="imageObject">
-        <li *ngFor="let img of frames.imageObject,let i=index">
+        <!-- <li *ngFor="let img of frames.imageObject,let i=index">
           <div [ngClass]="{'box-content': getImgId(i)}" class="mg-content">
             <img src={{img.thumbImage}} class="thumbImage" (click)="imageClick(i)">
           </div>
@@ -10,6 +10,16 @@
             <li>arjeqy: {{img.sum}}</li>
             <li>baget: {{img.baget}}</li>
             <li>laynutyun{{img.width}}</li>
+          </ul>
+        </li> -->
+        <li *ngFor = "let img of frames?.framesImge,let i=index">
+          <div [ngClass] = "{'box-content': getFrameId(img)}">
+            <img src="{{img?.show_image}}" class="thumbImage" (click)='frameClick(img)'>
+          </div>
+          <ul class="card">
+            <li>{{img.description_ru}}</li>
+            <li>{{img.name_ru}}</li>
+            <li>{{img.price}}</li>
           </ul>
         </li>
       </ul>

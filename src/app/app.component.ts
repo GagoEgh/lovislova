@@ -3,6 +3,8 @@ import { FramesServService } from './frames-serv.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalContentComponent } from './ngbd-modal-content/ngbd-modal-content.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FramesImg } from './img-ramka';
+import { isTemplateExpression } from 'typescript';
 
 
 @Component({
@@ -51,9 +53,11 @@ export class AppComponent implements OnInit {
 
     this.frames.framesFoneGet().subscribe((el: any) => {
       this.frames.div = el.results;
-      console.log(el.results);
-      
       this.frames.background = el.results[0];
+    })
+
+    this.frames.getFrames().subscribe((el:any)=>{
+      this.frames.framesImge = el.results;
     })
 
   }
@@ -64,12 +68,18 @@ export class AppComponent implements OnInit {
     return style
   }
 
+  frameClick(img:FramesImg){
+    this.frames.index = img.id;
+    this.frames.frame = this.frames.framesImge.find(item => item.id === this.frames.index);
+  }
   imageClick($event: number) {
     this.frames.index = $event + 1;
     this.frames.frame = this.frames.frames.find(item => item.id === this.frames.index);
-
   }
 
+  getFrameId(img:FramesImg){
+    return img.id === this.frames.index
+  }
   getImgId(i: number) {
     return (i + 1) === this.frames.frame?.id;
   }

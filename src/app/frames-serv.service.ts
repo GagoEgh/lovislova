@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Api, ImgRamka, Painding } from './img-ramka'
+import { Api, FramesImg, ImgRamka, Painding } from './img-ramka'
 
 @Injectable({
     providedIn: 'root'
 })
 export class FramesServService {
-    frame: any;
-    index = 0;
+    background:any = { };
     text: string = '';
     isImg = true;
-
+    div:any= [];
+    frame: any;
+    index = 3;
+    
     api: Api = {
         worldApi: 'http://sirun-bar-api.annaniks.com',
         api_utils: '/utils',
@@ -23,27 +25,6 @@ export class FramesServService {
         api_promocode: '/promocode/'
     }
 
-    
-    background:any = {
-        // id: 1,
-        // color: "gainsboro"
-        // id:null,
-        color:null,
-        name:null,
-        image:null
-    };
-
-    // div = [{
-    //     id: 1,
-    //     color: "gainsboro"
-    // }, {
-    //     id: 2,
-    //     color: 'grey'
-    // }, {
-    //     id: 3,
-    //     color: 'moccasin'
-    // }];
-    div:any= [];
     painding: Painding = {
         values: {
             colored: false,
@@ -54,8 +35,8 @@ export class FramesServService {
         },
         imgs: [],
         id: 2
-
     };
+
 
     imgColor = [{
         ceys: {
@@ -215,6 +196,8 @@ export class FramesServService {
 
         }
     ]
+
+    framesImge:FramesImg[] = [];
     constructor(private url: HttpClient) { }
 
     imgColorGet() {
@@ -223,5 +206,9 @@ export class FramesServService {
 
     framesFoneGet(){
         return this.url.get(this.api.worldApi + this.api.api_utils+this.api.api_bgr)
+    }
+
+    getFrames(){
+        return this.url.get(this.api.worldApi + this.api.api_utils+this.api.api_frame)
     }
 }
