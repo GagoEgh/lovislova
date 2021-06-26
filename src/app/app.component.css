@@ -6,29 +6,34 @@
 
 .catalog{
     display: flex;
-    margin: 0 auto;
     border-radius: 40px;
     background: rgba(255,255,255,0.5);
-    width: 55%;
+    width: fit-content;
+    padding: 0 90px;
+    position: relative;
+    left: 50%;
+    top:10px;
 }
 
 .carusel{
-    width: 50%;
+    width: fit-content;
+    margin-left: -15px;
 }
 
 .imageObject{
     display: flex;
     list-style: none;
+    width: fit-content;
 }
 
 .imageObject li{
     position: relative;
-    width: 50%;
+    width: fit-content;
 }
 
 .thumbImage{
     cursor: pointer;
-    width: 90%;
+    width: 52px;
     margin-left: 5px;
     padding-top: 17px;
     
@@ -60,17 +65,18 @@
 
 .backgrounds{
     display: flex;
-    width: 20%;
     padding: 2% 4% 0 4%;
+    margin-left: 20px;
+    width: fit-content;
 }
 
 
 .white{
-    width: 45%;
     height: 67%;
     margin-left: 5px;
     cursor: pointer;
     position: relative;
+    width: 35px;
 }
 
 .text{
@@ -90,13 +96,13 @@
 }
    
 .imgColor{
-    padding-top:24px;
+    padding:24px;
     display: flex;
     flex-direction: row;
 }
 
 .colorless{
-    width: 30px;
+    width: 35px;
     height: 20px;
     margin-left: 5px;
     cursor: pointer;

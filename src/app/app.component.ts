@@ -15,6 +15,9 @@ import { isTemplateExpression } from 'typescript';
 export class AppComponent implements OnInit {
   @ViewChild("block", { static: false }) block: ElementRef | undefined;
   validateForm: FormGroup = new FormGroup({});
+  margin_top: number | undefined;
+  isMargin = false;
+
   frameWi: number | undefined;
   heigth: number | undefined;
   width: number | undefined;
@@ -23,19 +26,18 @@ export class AppComponent implements OnInit {
   constructor(public frames: FramesServService, private modalService: NgbModal, private form: FormBuilder) { }
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.width = this.block?.nativeElement.clientWidth | 1;
-    this.heigth = this.block?.nativeElement.clientHeight | 1;
-    this.scale = window.innerWidth / this.width - 0.4;
-    if (this.scale > 1) {
-      this.scale = 1;
-    } else {
-      this.scale = window.innerWidth / this.width - 0.4;
+    if (window.innerWidth <= 1024) {
+      this.isMargin = true;
+      this.width = this.block?.nativeElement.clientWidth | 1;
+      this.heigth = this.block?.nativeElement.clientHeight | 1;
+      this.scale = window.innerWidth / this.width;
+       this.margin_top = (this.scale - 2)*10;
+      console.log(this.margin_top)
     }
-
   }
 
   ngOnInit(): void {
-    this.imageClick(this.frames.index);
+    this.frameClick(this.frames.index)
     this.validateForm = this.form.group(
       { text: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(9)]] }
     )
@@ -56,32 +58,25 @@ export class AppComponent implements OnInit {
       this.frames.background = el.results[0];
     })
 
-    this.frames.getFrames().subscribe((el:any)=>{
+    this.frames.getFrames().subscribe((el: any) => {
       this.frames.framesImge = el.results;
     })
 
   }
   public setStyle() {
     let style = {
-      transform: "translate(-50%, 10%)" + "scale(" + this.scale + ")"
+      transform: "translate(-50%, 10px)" + "scale(" + this.scale + ")"
     }
     return style
   }
 
-  frameClick(img:FramesImg){
-    this.frames.index = img.id;
+  frameClick(id: number) {
+    this.frames.index = id;
     this.frames.frame = this.frames.framesImge.find(item => item.id === this.frames.index);
   }
-  imageClick($event: number) {
-    this.frames.index = $event + 1;
-    this.frames.frame = this.frames.frames.find(item => item.id === this.frames.index);
-  }
 
-  getFrameId(img:FramesImg){
+  getFrameId(img: FramesImg) {
     return img.id === this.frames.index
-  }
-  getImgId(i: number) {
-    return (i + 1) === this.frames.frame?.id;
   }
 
   changeBg(bg: any) {
