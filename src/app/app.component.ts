@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FramesServService } from './frames-serv.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalContentComponent } from './ngbd-modal-content/ngbd-modal-content.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FramesImg } from './img-ramka';
-import { isTemplateExpression } from 'typescript';
 
 
 @Component({
@@ -16,8 +15,6 @@ export class AppComponent implements OnInit {
   @ViewChild("block", { static: false }) block: ElementRef | undefined;
   validateForm: FormGroup = new FormGroup({});
   margin_top: number | undefined;
-  isMargin = false;
-
   frameWi: number | undefined;
   heigth: number | undefined;
   width: number | undefined;
@@ -27,17 +24,13 @@ export class AppComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize() {
     if (window.innerWidth <= 1024) {
-      this.isMargin = true;
       this.width = this.block?.nativeElement.clientWidth | 1;
       this.heigth = this.block?.nativeElement.clientHeight | 1;
       this.scale = window.innerWidth / this.width;
-       this.margin_top = (this.scale - 2)*10;
-      console.log(this.margin_top)
     }
   }
 
   ngOnInit(): void {
-    this.frameClick(this.frames.index)
     this.validateForm = this.form.group(
       { text: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(9)]] }
     )
@@ -60,12 +53,14 @@ export class AppComponent implements OnInit {
 
     this.frames.getFrames().subscribe((el: any) => {
       this.frames.framesImge = el.results;
+       this.frameClick(this.frames.index)
     })
-
+   
   }
+
   public setStyle() {
     let style = {
-      transform: "translate(-50%, 10px)" + "scale(" + this.scale + ")"
+      transform: "translate(-50%, -5%)" + "scale(" + this.scale + ")"
     }
     return style
   }
@@ -88,7 +83,6 @@ export class AppComponent implements OnInit {
     this.frames.painding.id = obj.ceys.id;
     this.changeColorImg();
   }
-
 
   changeColorImg() {
     this.frames.text = this.validateForm.get('text')?.value;
@@ -121,7 +115,6 @@ export class AppComponent implements OnInit {
 
     this.changeColorImg();
     this.frames.isImg = false;
-
   }
 
   open() {
@@ -131,6 +124,5 @@ export class AppComponent implements OnInit {
   deletImg(ev: boolean) {
     this.frames.isImg = ev;
     this.validateForm.reset();
-
   }
 }

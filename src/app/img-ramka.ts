@@ -1,4 +1,4 @@
-export interface ImgRamka {
+export interface ImgRamka {  //jnjel
     id: number,
     img_top: string,
     img_top_rigth: string,
