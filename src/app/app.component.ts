@@ -23,10 +23,23 @@ export class AppComponent implements OnInit {
   constructor(public frames: FramesServService, private modalService: NgbModal, private form: FormBuilder) { }
   @HostListener('window:resize', ['$event'])
   onResize() {
+    this.heigth = this.block?.nativeElement.clientHeight | 1;
+    this.width = this.block?.nativeElement.clientWidth | 1;
     if (window.innerWidth <= 1024) {
-      this.width = this.block?.nativeElement.clientWidth | 1;
-      this.heigth = this.block?.nativeElement.clientHeight | 1;
       this.scale = window.innerWidth / this.width - 0.1;
+
+    }
+
+    console.log('width', this.width)
+    if (this.frames.letterImges.length <= 4 && this.frames.letterImges.length >=0) {
+      if (window.innerWidth <= 1024) {
+        this.width += 180;
+        console.log('width', this.width)
+        this.scale = window.innerWidth / this.width -0.2;
+        console.log('scale', this.scale)
+      }
+
+      
     }
   }
 
@@ -68,11 +81,11 @@ export class AppComponent implements OnInit {
       for (let i = 0; i < el.count; i++) {
         this.frames.imgColor[i].ceys = el.results[i];
       }
-      console.log('el', this.frames.imgColor)
     })
   }
 
   public setStyle() {
+
     let style = {
       transform: "translate(-50%, -5%)" + "scale(" + this.scale + ")"
     }
@@ -95,7 +108,6 @@ export class AppComponent implements OnInit {
   imgFone(obj: any) {
     this.frames.painding.values = obj.values;
     this.frames.painding.id = obj.ceys.id;
-    console.log( this.frames.painding)
     this.changeColorImg();
   }
 
@@ -129,13 +141,12 @@ export class AppComponent implements OnInit {
     if (this.validateForm.invalid) return;
 
     this.changeColorImg();
-  
+
     this.frames.isImg = false;
 
     // zapros
     this.frames.letterGet().subscribe((el: any) => {
       this.frames.letterImges = el;
-      console.log('letterImges', this.frames.letterImges);
       this.frames.letterImges = this.frames.letterImges.filter(img => {
         return !img.not_found
       })

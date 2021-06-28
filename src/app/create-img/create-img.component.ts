@@ -114,6 +114,7 @@ export class CreateImgComponent implements OnInit {
     this.bottomText = this.form.group(
       { btmText: [null] }
     )
+    
   }
 
   getApp(isBool: boolean) {
