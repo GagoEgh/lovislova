@@ -1,13 +1,9 @@
-export interface ImgRamka {  //jnjel
+
+export interface Ceys {
     id: number,
-    img_top: string,
-    img_top_rigth: string,
-    img_rigth: string,
-    img_rigth_bottom: string,
-    img_bottom: string,
-    img_bottom_left: string,
-    img_left: string,
-    img_left__top: string,
+    name_en: string,
+    name_hy: string,
+    name_ru: string
 }
 
 export interface Value {
@@ -15,33 +11,35 @@ export interface Value {
     withandblack: boolean,
     sepia: boolean,
     color: string,
-     child: string,
+    child: string,
 }
 
 export interface Painding {
     values: Value,
     imgs: string[],
-    id:number
-    
+    id: number
+
 }
 
-export interface Api{
-    worldApi:string,
+export interface Api {
+    worldApi: string,
     api_utils: string,
-    api_bgr:string,
+    api_bgr: string,
     api_frame: string,
     api_color: string,
     api_category: string,
     api_character: string,
     api_created_frame_category: string,
-    api_promocode:string
+    api_promocode: string,
+    api_img: string,
+    api_create_word: string
 }
 
-export interface FramesImg{
+export interface FramesImg {
     id: number,
     name_en: string,
     name_ru: string,
-    name_hy:string,
+    name_hy: string,
     description_en: string,
     description_ru: string,
     description_hy: string,
@@ -49,4 +47,43 @@ export interface FramesImg{
     corner_image: string,
     line_image: string,
     show_image: string,
+}
+
+export interface LetterImge {
+    index: number,
+    not_found: boolean,
+    character: string,
+    image:Image 
+
+}
+
+export interface Image{
+    id: number,
+    image: string, 
+    thumbnail: string, 
+    category: number,
+    category_details:CategoryDetails,
+    color: number,
+    color_details:ColorDetails,
+    character: number,
+    character_details:CharacterDetails
+}
+
+export interface CategoryDetails{
+    id: number,
+    name_en: string,
+    name_ru: string,
+    name_hy: string,
+}
+
+export interface ColorDetails{
+    id: number,
+    name_en: string,
+    name_ru: string,
+    name_hy: string,
+}
+
+export interface CharacterDetails{
+    id: number,
+    character: string,
 }

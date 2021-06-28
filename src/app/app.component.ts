@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     if (window.innerWidth <= 1024) {
       this.width = this.block?.nativeElement.clientWidth | 1;
       this.heigth = this.block?.nativeElement.clientHeight | 1;
-      this.scale = window.innerWidth / this.width;
+      this.scale = window.innerWidth / this.width - 0.1;
     }
   }
 
@@ -34,28 +34,42 @@ export class AppComponent implements OnInit {
     this.validateForm = this.form.group(
       { text: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(9)]] }
     )
-    localStorage.setItem('A', './assets/world_img/1.jpg');
-    localStorage.setItem('B', './assets/world_img/4.jpg');
-    localStorage.setItem('C', './assets/world_img/7.jpg');
-    localStorage.setItem('D', './assets/world_img/10.jpg');
-    localStorage.setItem('E', './assets/world_img/13.jpg');
 
-    this.frames.imgColorGet().subscribe((el: any) => {
-      for (let i = 0; i < el.count; i++) {
-        this.frames.imgColor[i].ceys = el.results[i];
-      }
-    })
+    // localStorage.setItem('A', './assets/world_img/1.jpg');
+    // localStorage.setItem('B', './assets/world_img/4.jpg');
+    // localStorage.setItem('C', './assets/world_img/7.jpg');
+    // localStorage.setItem('D', './assets/world_img/10.jpg');
+    // localStorage.setItem('E', './assets/world_img/13.jpg');
 
+    // this.frames.imgColorGet().subscribe((el: any) => {
+    //   for (let i = 0; i < el.count; i++) {
+    //     this.frames.imgColor[i].ceys = el.results[i];
+    //   }
+    //   console.log('el',this.frames.imgColor)
+    // })
+
+    this.imgColor();
     this.frames.framesFoneGet().subscribe((el: any) => {
       this.frames.div = el.results;
       this.frames.background = el.results[0];
+
     })
 
     this.frames.getFrames().subscribe((el: any) => {
       this.frames.framesImge = el.results;
-       this.frameClick(this.frames.index)
+      this.frameClick(this.frames.index)
+
     })
-   
+
+  }
+
+  imgColor() {
+    this.frames.imgColorGet().subscribe((el: any) => {
+      for (let i = 0; i < el.count; i++) {
+        this.frames.imgColor[i].ceys = el.results[i];
+      }
+      console.log('el', this.frames.imgColor)
+    })
   }
 
   public setStyle() {
@@ -81,6 +95,7 @@ export class AppComponent implements OnInit {
   imgFone(obj: any) {
     this.frames.painding.values = obj.values;
     this.frames.painding.id = obj.ceys.id;
+    console.log( this.frames.painding)
     this.changeColorImg();
   }
 
@@ -114,7 +129,18 @@ export class AppComponent implements OnInit {
     if (this.validateForm.invalid) return;
 
     this.changeColorImg();
+  
     this.frames.isImg = false;
+
+    // zapros
+    this.frames.letterGet().subscribe((el: any) => {
+      this.frames.letterImges = el;
+      console.log('letterImges', this.frames.letterImges);
+      this.frames.letterImges = this.frames.letterImges.filter(img => {
+        return !img.not_found
+      })
+    })
+
   }
 
   open() {

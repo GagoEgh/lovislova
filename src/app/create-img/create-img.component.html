@@ -16,15 +16,11 @@
       </form>
     </div>
   </div>
-
   <div class="imgs">
-
-    <div class="bg-img" *ngFor='let img of frames.painding.imgs,let i = index' [style.background-image]="'url(' + img + ')'">
+    <div class="bg-img" *ngFor = 'let img of frames.letterImges' [style.background-image]="'url( http://sirun-bar-api.annaniks.com/'+ img.image.thumbnail + ')'" >
       <div class="bgr" (click)="open()"> <p >ընտրել ուրիշ նկար</p></div>
     </div>
-
   </div>
-
   <div class="menu">
     <div *ngIf='frames.painding.imgs.length>3' [style.opacity]="bottomLettering.isForm?'1':'0'">
       <form [formGroup]='bottomText'>
