@@ -7,6 +7,7 @@ import { Api, Ceys, FramesImg, LetterImge, Painding, Value } from './img-ramka'
 })
 export class FramesServService {
     background: any = {};
+    isMessage = false;
     text: string = '';
     isImg = true;
     div: any = [];
@@ -40,7 +41,8 @@ export class FramesServService {
     };
 
 
-    imgColor: { ceys: Ceys, values: Value }[] = [{
+    imgColor: { ceys: Ceys, values: Value }[] = [
+        {
         ceys: {
             id: 0,
             name_en: '',
@@ -83,7 +85,8 @@ export class FramesServService {
             color: 'grey',
             child: 'grey',
         }
-    }];
+    }
+];
 
 
     framesImge: FramesImg[] = [];
@@ -104,6 +107,14 @@ export class FramesServService {
     }
 
     letterGet() { 
-        return this.url.get(this.api.worldApi + this.api.api_img + this.api.api_create_word + this.text+'/');
+        return this.url.get(this.api.worldApi + this.api.api_img + this.api.api_create_word + this.text+'/',{
+            params:new HttpParams().set('color',this.painding.id.toString())
+        });
+    }
+
+    letterColection(character:string){
+        return this.url.get(this.api.worldApi+this.api.api_img+this.api.api_img+'/',{
+            params:new HttpParams().set('search',character)
+        })
     }
 }

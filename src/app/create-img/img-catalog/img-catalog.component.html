@@ -5,13 +5,10 @@
 </div>
 <div class="modal-body">
     <div class="block">
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Ipsam doloribus amet eveniet mollitia possimus,
-            iusto architecto, nobis numquam repudiandae voluptas,
-            vero accusantium eaque beatae? Iure pariatur doloremque quidem
-            perspiciatis assumenda?
-        </p>
+        
+        <div class="bg-img" *ngFor = ' let item of img' #newItem (click)='changeImg(item)'
+          [style.background-image]="'url('+ item.thumbnail + ')'">
+        </div>
     </div>
 
 </div>

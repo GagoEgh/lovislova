@@ -2,9 +2,10 @@
 
 .modal-content {
     width: fit-content !important;
-    top:100px !important;
-    left: -10% !important;
+    top: 100px !important;
+
 }
+
 .ng-image-slider .ng-image-slider-container .main .next, .ng-image-slider .ng-image-slider-container .main .prev {
     right: 0 !important;
     top: 80% !important;

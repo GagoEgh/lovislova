@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   width: number | undefined;
   scale: number = 1;
   isActive = false;
+  // isMessage = false;
   constructor(public frames: FramesServService, private modalService: NgbModal, private form: FormBuilder) { }
   @HostListener('window:resize', ['$event'])
   onResize() {
@@ -30,16 +31,18 @@ export class AppComponent implements OnInit {
 
     }
 
-    console.log('width', this.width)
-    if (this.frames.letterImges.length <= 4 && this.frames.letterImges.length >=0) {
+    if (this.frames.letterImges.length <= 4 && this.frames.letterImges.length) {
       if (window.innerWidth <= 1024) {
         this.width += 180;
-        console.log('width', this.width)
-        this.scale = window.innerWidth / this.width -0.2;
-        console.log('scale', this.scale)
+        this.scale = window.innerWidth / this.width - 0.2;
       }
+    }
 
-      
+    if (this.frames.letterImges.length <= 2 && this.frames.letterImges.length) {
+      if (window.innerWidth <= 1024) {
+        this.width += 380;
+        this.scale = window.innerWidth / this.width;
+      }
     }
   }
 
@@ -73,13 +76,14 @@ export class AppComponent implements OnInit {
       this.frameClick(this.frames.index)
 
     })
-
   }
 
   imgColor() {
-    this.frames.imgColorGet().subscribe((el: any) => {
-      for (let i = 0; i < el.count; i++) {
-        this.frames.imgColor[i].ceys = el.results[i];
+    this.frames.imgColorGet().subscribe((el: any) => {      
+      for (let i = 0; i < el.count; i++) {        
+        if (this.frames && this.frames.imgColor[i] && this.frames.imgColor[i].ceys) {
+          this.frames.imgColor[i].ceys = el.results[i];
+        }
       }
     })
   }
@@ -108,52 +112,63 @@ export class AppComponent implements OnInit {
   imgFone(obj: any) {
     this.frames.painding.values = obj.values;
     this.frames.painding.id = obj.ceys.id;
-    this.changeColorImg();
+    this.letterColorFone();
+    //this.changeColorImg();
   }
 
-  changeColorImg() {
-    this.frames.text = this.validateForm.get('text')?.value;
-    if (this.frames.painding.values.withandblack) {
-      this.frames.painding.imgs = [];
-      for (let i = 0; i < this.frames.text?.length; i++) {
-        let img: string | null = localStorage?.getItem(this.frames.text[i].toUpperCase())
-        if (typeof img === 'string') this.frames.painding.imgs.push(img);
-      }
+  // changeColorImg() {
+  //   this.frames.text = this.validateForm.get('text')?.value;
+  //   if (this.frames.painding.values.withandblack) {
+  //     this.frames.painding.imgs = [];
+  //     for (let i = 0; i < this.frames.text?.length; i++) {
+  //       let img: string | null = localStorage?.getItem(this.frames.text[i].toUpperCase())
+  //       if (typeof img === 'string') this.frames.painding.imgs.push(img);
+  //     }
 
-    }
+  //   }
 
-    if (this.frames.painding.values.colored) {
-      this.frames.painding.imgs = [];
-      for (let i = 0; i < this.frames.text?.length; i++) {
-        this.frames.painding.imgs.push('./assets/world_img/2.jpg');
-      }
-    }
+  //   if (this.frames.painding.values.colored) {
+  //     this.frames.painding.imgs = [];
+  //     for (let i = 0; i < this.frames.text?.length; i++) {
+  //       this.frames.painding.imgs.push('./assets/world_img/2.jpg');
+  //     }
+  //   }
 
-    if (this.frames.painding.values.sepia) {
-      this.frames.painding.imgs = [];
-      for (let i = 0; i < this.frames.text?.length; i++) {
-        this.frames.painding.imgs.push('./assets/world_img/8.jpg');
-      }
-    }
-  }
+  //   if (this.frames.painding.values.sepia) {
+  //     this.frames.painding.imgs = [];
+  //     for (let i = 0; i < this.frames.text?.length; i++) {
+  //       this.frames.painding.imgs.push('./assets/world_img/8.jpg');
+  //     }
+  //   }
+  // }
 
   onSubmit() {
     if (this.validateForm.invalid) return;
 
-    this.changeColorImg();
+   // this.changeColorImg();
 
     this.frames.isImg = false;
 
     // zapros
-    this.frames.letterGet().subscribe((el: any) => {
+    this.letterColorFone()
+
+  }
+
+  letterColorFone(){
+    this.frames.text = this.validateForm.get('text')?.value;
+      this.frames.letterGet().subscribe((el: any) => {
       this.frames.letterImges = el;
       this.frames.letterImges = this.frames.letterImges.filter(img => {
         return !img.not_found
       })
+      if (this.frames.letterImges.length === 0) {
+        this.validateForm.reset();
+        this.frames.isMessage = true;
+        this.frames.isImg = true;
+      }
+
     })
-
   }
-
   open() {
     const modalRef = this.modalService.open(NgbdModalContentComponent);
   }

@@ -1,6 +1,6 @@
 <header class="conteiner">
-  <div  class="catalog" [ngStyle]="setStyle()">
-    <div class="carusel">
+  <div  class="catalog" [ngStyle]="setStyle()" >
+   <div class="carusel">                                               
       <ul class="imageObject">
         <li *ngFor="let img of frames?.framesImge,let i=index">
           <div [ngClass]="{'box-content': getFrameId(img)}">
@@ -55,7 +55,9 @@
         <div class="squrl" [style.background-image]="'url(' + frames.frame?.right_bottom_corner_image + ')'"></div>
       </div>
     </div>
+    <p *ngIf = 'frames.isMessage' class="message">ՏՎՅԱԼ ՏԱՌԵՐՈՎ ՆԿԱՐ ԴԵՌՎՍ ՉՈԻՆԵՆՔ</p>
     <button type="submit" (click)='onSubmit()' class="create" *ngIf='frames.isImg'>create word</button>
+   
   </div>
   <ng-template #create>
     <app-create-img (mainApp)="deletImg($event)"></app-create-img>

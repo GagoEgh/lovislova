@@ -25,29 +25,29 @@ export class CreateImgComponent implements OnInit {
 
   topLettering: Letter = {
     isSpan: false,
-    isMenu: false, 
-    isForm: false  
+    isMenu: false,
+    isForm: false
   };
 
   bottomLettering: Letter = {
     isSpan: false,
-    isMenu: false, 
-    isForm: false 
+    isMenu: false,
+    isForm: false
   }
 
- 
+
   @Output() mainApp: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(public frames: FramesServService, private form: FormBuilder,private modalService: NgbModal) { }
+  constructor(public frames: FramesServService, private form: FormBuilder, private modalService: NgbModal) { }
 
-  deleteTopProprty(){
+  deleteTopProprty() {
     this.topLettering.isSpan = false;
     this.topLettering.isMenu = false;
     this.validateForm.reset();
- 
+
   }
-  
-  deleteBottomProprty(){
+
+  deleteBottomProprty() {
     this.bottomLettering.isMenu = false;
     this.bottomLettering.isSpan = false;
     this.bottomText.reset();
@@ -87,7 +87,7 @@ export class CreateImgComponent implements OnInit {
     if (!this.bottomText.get('btmText')?.value) {
       this.bottomLettering.isMenu = true;
       this.bottomLettering.isForm = true;
-      this.bottomLettering.isSpan =false;
+      this.bottomLettering.isSpan = false;
     }
 
     if (this.validateForm.get('topText')?.value) {
@@ -114,15 +114,27 @@ export class CreateImgComponent implements OnInit {
     this.bottomText = this.form.group(
       { btmText: [null] }
     )
-    
+    this.frames.isMessage = false;
   }
 
   getApp(isBool: boolean) {
     this.mainApp.emit(isBool);
   }
 
-  open() {
-    const modalRef = this.modalService.open(ImgCatalogComponent);
+  open(img: any) {
+    this.frames.letterColection(img.character.toUpperCase()).subscribe((el: any) => {
+      const modalRef = this.modalService.open(ImgCatalogComponent, { size: 'lg' });
+      modalRef.componentInstance.img = el.results;
+      modalRef.result.then((result) => { }, (reason) => {
+        if (reason) {
+          console.log('reason',reason);
+          console.log('nerka',img.image.thumbnail )
+        }
+      })
+    })
+
+
     // modalRef.componentInstance.name = 'World';
+
   }
 }

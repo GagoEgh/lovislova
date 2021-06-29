@@ -1,0 +1,21 @@
+.modal-content {
+    width: -webkit-fit-content !important;
+    width: -moz-fit-content !important;
+    width: fit-content !important;
+    top: 100px !important;
+}
+
+.block{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.bg-img{
+    width: 100px;
+    height: 150px;
+    background-position: center;
+    background-size: 100% 100%;
+    margin: 5px 10px;
+    cursor: pointer;
+}
