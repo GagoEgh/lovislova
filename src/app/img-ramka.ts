@@ -16,8 +16,9 @@ export interface Value {
 
 export interface Painding {
     values: Value,
-    imgs: string[],
-    id: number
+    imgs: any[],
+    id: number,
+    categoryId: number
 
 }
 
@@ -87,3 +88,16 @@ export interface CharacterDetails{
     id: number,
     character: string,
 }
+
+export interface Category{
+    id:number,
+    name_en: string,
+    name_hy: string,
+    name_ru:string
+  }
+
+  export  interface Letter {
+      isSpan: boolean,
+      isMenu: boolean,
+      isForm: boolean
+    }

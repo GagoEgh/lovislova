@@ -29,8 +29,6 @@
       </div>
     </div>
   </div>
-
-
   <div #block class="block" [ngStyle]="setStyle()" >
     <div class="myWrap">
       <div class="reight">
@@ -41,7 +39,7 @@
       <div class="content">
         <div class="top" [style.background-image]="'url(' + frames.frame?.top_line_image + ')'"></div>
         <div class="letter" [style.backgroundColor]="frames.background.color" *ngIf='frames.isImg else create'>
-          <form [formGroup]="validateForm">
+          <form [formGroup]="frames.validateForm">
             <input type="text" formControlName='text' maxlength="9" placeholder="ԳՐԵՔ ԲԱՌԸ">
           </form>
         </div> 

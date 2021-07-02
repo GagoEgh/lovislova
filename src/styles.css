@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 .modal-content {
-    width: fit-content !important;
+    /* width: fit-content !important; */
     top: 100px !important;
-
+    /* left: -100px !important; */
 }
 
 .ng-image-slider .ng-image-slider-container .main .next, .ng-image-slider .ng-image-slider-container .main .prev {

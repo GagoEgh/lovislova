@@ -2,16 +2,10 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FramesServService } from '../frames-serv.service';
+import { Letter } from '../img-ramka';
 
-import { Painding } from '../img-ramka';
 import { ImgCatalogComponent } from './img-catalog/img-catalog.component';
 
-
-interface Letter {
-  isSpan: boolean,
-  isMenu: boolean,
-  isForm: boolean
-}
 
 @Component({
   selector: 'app-create-img',
@@ -35,9 +29,7 @@ export class CreateImgComponent implements OnInit {
     isForm: false
   }
 
-
   @Output() mainApp: EventEmitter<boolean> = new EventEmitter();
-
   constructor(public frames: FramesServService, private form: FormBuilder, private modalService: NgbModal) { }
 
   deleteTopProprty() {
@@ -101,10 +93,7 @@ export class CreateImgComponent implements OnInit {
   }
 
   changeImg() {
-    this.frames.painding.imgs = [];
-    for (let i = 0; i < this.frames.text?.length; i++) {
-      this.frames.painding.imgs.push('./assets/world_img/11.jpg');
-    }
+    this.frames.letterColorFone()
   }
 
   ngOnInit(): void {
@@ -121,20 +110,23 @@ export class CreateImgComponent implements OnInit {
     this.mainApp.emit(isBool);
   }
 
-  open(img: any) {
+  checkImage(img: string): boolean {
+    return img.startsWith('http') ? true : false
+  }
+
+
+  open(img: any, num: number) {
     this.frames.letterColection(img.character.toUpperCase()).subscribe((el: any) => {
       const modalRef = this.modalService.open(ImgCatalogComponent, { size: 'lg' });
       modalRef.componentInstance.img = el.results;
+      modalRef.componentInstance.character = this.frames.letterImges[num];
       modalRef.result.then((result) => { }, (reason) => {
         if (reason) {
-          console.log('reason',reason);
-          console.log('nerka',img.image.thumbnail )
+          this.frames.letterImges[num].image = reason;
+          
         }
       })
     })
-
-
-    // modalRef.componentInstance.name = 'World';
 
   }
 }

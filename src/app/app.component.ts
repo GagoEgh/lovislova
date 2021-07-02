@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { FramesServService } from './frames-serv.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalContentComponent } from './ngbd-modal-content/ngbd-modal-content.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder,  Validators } from '@angular/forms';
 import { FramesImg } from './img-ramka';
 
 
@@ -13,33 +13,31 @@ import { FramesImg } from './img-ramka';
 })
 export class AppComponent implements OnInit {
   @ViewChild("block", { static: false }) block: ElementRef | undefined;
-  validateForm: FormGroup = new FormGroup({});
   margin_top: number | undefined;
   frameWi: number | undefined;
   heigth: number | undefined;
   width: number | undefined;
   scale: number = 1;
   isActive = false;
-  // isMessage = false;
   constructor(public frames: FramesServService, private modalService: NgbModal, private form: FormBuilder) { }
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.heigth = this.block?.nativeElement.clientHeight | 1;
     this.width = this.block?.nativeElement.clientWidth | 1;
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= 1165) {
       this.scale = window.innerWidth / this.width - 0.1;
 
     }
 
     if (this.frames.letterImges.length <= 4 && this.frames.letterImges.length) {
-      if (window.innerWidth <= 1024) {
-        this.width += 180;
+      if (window.innerWidth <= 1165) {
+        this.width += 280;
         this.scale = window.innerWidth / this.width - 0.2;
       }
     }
 
     if (this.frames.letterImges.length <= 2 && this.frames.letterImges.length) {
-      if (window.innerWidth <= 1024) {
+      if (window.innerWidth <= 1165) {
         this.width += 380;
         this.scale = window.innerWidth / this.width;
       }
@@ -47,22 +45,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.validateForm = this.form.group(
+    this.frames.validateForm = this.form.group(
       { text: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(9)]] }
     )
-
-    // localStorage.setItem('A', './assets/world_img/1.jpg');
-    // localStorage.setItem('B', './assets/world_img/4.jpg');
-    // localStorage.setItem('C', './assets/world_img/7.jpg');
-    // localStorage.setItem('D', './assets/world_img/10.jpg');
-    // localStorage.setItem('E', './assets/world_img/13.jpg');
-
-    // this.frames.imgColorGet().subscribe((el: any) => {
-    //   for (let i = 0; i < el.count; i++) {
-    //     this.frames.imgColor[i].ceys = el.results[i];
-    //   }
-    //   console.log('el',this.frames.imgColor)
-    // })
 
     this.imgColor();
     this.frames.framesFoneGet().subscribe((el: any) => {
@@ -89,7 +74,6 @@ export class AppComponent implements OnInit {
   }
 
   public setStyle() {
-
     let style = {
       transform: "translate(-50%, -5%)" + "scale(" + this.scale + ")"
     }
@@ -99,6 +83,7 @@ export class AppComponent implements OnInit {
   frameClick(id: number) {
     this.frames.index = id;
     this.frames.frame = this.frames.framesImge.find(item => item.id === this.frames.index);
+
   }
 
   getFrameId(img: FramesImg) {
@@ -112,69 +97,24 @@ export class AppComponent implements OnInit {
   imgFone(obj: any) {
     this.frames.painding.values = obj.values;
     this.frames.painding.id = obj.ceys.id;
-    this.letterColorFone();
-    //this.changeColorImg();
+    this.frames.letterColorFone();
+    
   }
-
-  // changeColorImg() {
-  //   this.frames.text = this.validateForm.get('text')?.value;
-  //   if (this.frames.painding.values.withandblack) {
-  //     this.frames.painding.imgs = [];
-  //     for (let i = 0; i < this.frames.text?.length; i++) {
-  //       let img: string | null = localStorage?.getItem(this.frames.text[i].toUpperCase())
-  //       if (typeof img === 'string') this.frames.painding.imgs.push(img);
-  //     }
-
-  //   }
-
-  //   if (this.frames.painding.values.colored) {
-  //     this.frames.painding.imgs = [];
-  //     for (let i = 0; i < this.frames.text?.length; i++) {
-  //       this.frames.painding.imgs.push('./assets/world_img/2.jpg');
-  //     }
-  //   }
-
-  //   if (this.frames.painding.values.sepia) {
-  //     this.frames.painding.imgs = [];
-  //     for (let i = 0; i < this.frames.text?.length; i++) {
-  //       this.frames.painding.imgs.push('./assets/world_img/8.jpg');
-  //     }
-  //   }
-  // }
 
   onSubmit() {
-    if (this.validateForm.invalid) return;
-
-   // this.changeColorImg();
+    if (this.frames.validateForm.invalid) return;
 
     this.frames.isImg = false;
-
-    // zapros
-    this.letterColorFone()
+    this.frames.letterColorFone();
 
   }
 
-  letterColorFone(){
-    this.frames.text = this.validateForm.get('text')?.value;
-      this.frames.letterGet().subscribe((el: any) => {
-      this.frames.letterImges = el;
-      this.frames.letterImges = this.frames.letterImges.filter(img => {
-        return !img.not_found
-      })
-      if (this.frames.letterImges.length === 0) {
-        this.validateForm.reset();
-        this.frames.isMessage = true;
-        this.frames.isImg = true;
-      }
-
-    })
-  }
   open() {
     const modalRef = this.modalService.open(NgbdModalContentComponent);
   }
 
   deletImg(ev: boolean) {
     this.frames.isImg = ev;
-    this.validateForm.reset();
+    this.frames.validateForm.reset();
   }
 }
